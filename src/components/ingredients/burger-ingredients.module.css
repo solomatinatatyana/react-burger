@@ -1,0 +1,10 @@
+.containerOuter{
+    display: flex;
+    flex-direction: column;
+}
+
+.ingredientListInnerWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}

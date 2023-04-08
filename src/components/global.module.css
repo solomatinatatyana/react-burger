@@ -1,4 +1,23 @@
 .container{
+    display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.containerColumn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerInner{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.containerOuter{
+
 }
