@@ -3,6 +3,7 @@ import {Button, ConstructorElement, CurrencyIcon, DragIcon} from "@ya.praktikum/
 import OrderDetails from "../modals/OrderDetails";
 import globalStyle from "../global.module.css";
 import PropTypes from "prop-types";
+import Modal from "../modals/Modal";
 
 const BurgerListElement = (props) => {
 
@@ -24,7 +25,12 @@ const BurgerListElement = (props) => {
         setIsOpen(false)
     }
 
-    const modal = (<OrderDetails isOpened={isOpen} onClose={handleCloseModal}/>)
+    const modal = (
+        <Modal isOpened={isOpen}
+               onClose={handleCloseModal}>
+            <OrderDetails/>
+        </Modal>
+    )
 
     return (<>
             <div className={`${globalStyle.containerColumn} pb-10`}>
@@ -32,7 +38,7 @@ const BurgerListElement = (props) => {
                     <ConstructorElement
                         type="top"
                         isLocked={true}
-                        text={getBuns()[0]?.name}
+                        text={getBuns()[0]?.name + ` (Верх)`}
                         price={getBuns()[0]?.price}
                         thumbnail={getBuns()[0]?.image}
                         extraClass="pt-4"
@@ -41,7 +47,7 @@ const BurgerListElement = (props) => {
                         <div className={`${globalStyle.containerInner} custom-scroll`}>
                             {
                                 props.selected.filter((el) => el.type !== "bun").map((el) => (
-                                        <div key={props.selected.id} className="p-1">
+                                        <div key={el.name} className="p-1">
                                             <DragIcon type="primary"/>
                                             <ConstructorElement
                                                 extraClass="pb-4"
@@ -57,7 +63,7 @@ const BurgerListElement = (props) => {
                     <ConstructorElement
                         type="bottom"
                         isLocked={true}
-                        text={getBuns()[0]?.name}
+                        text={getBuns()[0]?.name + " (Низ)"}
                         price={getBuns()[0]?.price}
                         thumbnail={getBuns()[0]?.image}
                     />

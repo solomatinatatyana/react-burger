@@ -2,6 +2,7 @@ import React from "react";
 import IngredientCard from "./IngredientCard";
 import ingredientsStyle from "./burger-ingredients.module.css"
 import PropTypes from "prop-types";
+import ingredientTypes from "../../utils/constants/props.type";
 
 
 const IngredientCardList = (props) => {
@@ -11,7 +12,7 @@ const IngredientCardList = (props) => {
             <div className={ingredientsStyle.ingredientListInnerWrapper}>
                 {props.ingredients.map((ingredient => {
                     return (
-                        <div key={ingredient.id} style={{display: "flex", flexWrap: "wrap", width: "272px"}}>
+                        <div key={ingredient.name} style={{display: "flex", flexWrap: "wrap", width: "272px"}}>
                             <IngredientCard getInfo={props.getInfo} onclick={props.onClick} card={ingredient}/>
                         </div>
                     )
@@ -28,5 +29,5 @@ IngredientCardList.propTypes = {
     title: PropTypes.string.isRequired,
     getInfo: PropTypes.func.isRequired,
     onClick: PropTypes.func.isRequired,
-    ingredients: PropTypes.array.isRequired
+    ingredients: PropTypes.arrayOf(ingredientTypes).isRequired
 }

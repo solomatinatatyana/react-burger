@@ -10,11 +10,13 @@ const AppHeader = () => {
                     <div className={styles.navigation}>
                         <div className={styles.navigation}>
                             <BurgerIcon type="primary"/>
-                            <p className="text text_type_main-default">Конструктор</p>
+                            <a href="#" className={styles.a}><p className="text text_type_main-default">Конструктор</p>
+                            </a>
                         </div>
                         <div className={styles.navigation}>
                             <ListIcon type="secondary"/>
-                            <p className="text text_type_main-default">Лента Заказов</p>
+                            <a href="#" className={styles.a}><p
+                                className="text text_type_main-default text_color_inactive">Лента Заказов</p></a>
                         </div>
                     </div>
                     <div style={{padding: "16px 20px"}} className="p-4">
@@ -22,12 +24,11 @@ const AppHeader = () => {
                     </div>
                     <div className={styles.navigation}>
                         <ProfileIcon type="secondary"/>
-                        <p className="text text_type_main-default">Личный кабинет</p>
+                        <a href="#" className={styles.a}><p
+                            className="text text_type_main-default text_color_inactive">Личный кабинет</p></a>
                     </div>
                 </div>
             </div>
-
-
         </header>
     )
 }

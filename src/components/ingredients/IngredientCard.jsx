@@ -2,6 +2,7 @@ import React from "react";
 import {Counter, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import globalStyle from "../global.module.css";
 import PropTypes from "prop-types";
+import ingredientTypes from "../../utils/constants/props.type";
 
 
 const IngredientCard = (props) => {
@@ -42,14 +43,7 @@ const IngredientCard = (props) => {
 export default IngredientCard
 
 IngredientCard.propTypes = {
-    id: PropTypes.number.isRequired,
-    image: PropTypes.element.isRequired,
-    name: PropTypes.string.isRequired,
-    calories: PropTypes.number.isRequired,
-    proteins: PropTypes.number.isRequired,
-    carbohydrates: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired,
-    onClick: PropTypes.func.isRequired,
+    card: ingredientTypes.isRequired,
+    onClick: PropTypes.func,
     getInfo: PropTypes.func.isRequired
-
 }

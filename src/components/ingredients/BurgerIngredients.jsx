@@ -3,6 +3,9 @@ import IngredientCardList from "./IngredientCardList";
 import IngredientDetails from "../modals/IngredientDetails";
 import PropTypes from "prop-types";
 import IngredientTabs from "./IngredientTabs";
+import Modal from "../modals/Modal";
+import ingredientTypes from "../../utils/constants/props.type";
+
 
 const BurgerIngredients = (props) => {
 
@@ -12,7 +15,7 @@ const BurgerIngredients = (props) => {
 
     const [isOpen, setIsOpen] = useState(false)
     const [cardDetail, setCardDetail] = useState(
-        {image: null, name: "", calories: 0, proteins: 0, fat: 0, carbohydrates: 0}
+        {image: "", name: "", calories: 0, proteins: 0, fat: 0, carbohydrates: 0}
     )
 
     const handleOpenModal = () => {
@@ -35,12 +38,11 @@ const BurgerIngredients = (props) => {
     }
 
     const modal = (
-        <IngredientDetails
-            isOpened={isOpen}
-            header={"Детали ингредиента"}
-            onClose={handleCloseModal}
-            cardDetail={cardDetail}
-        />
+        <Modal isOpened={isOpen}
+               header={"Детали ингредиента"}
+               onClose={handleCloseModal}>
+            <IngredientDetails cardDetail={cardDetail}/>
+        </Modal>
     )
 
     const handleTabClick = (type) => {
@@ -78,5 +80,5 @@ const BurgerIngredients = (props) => {
 export default BurgerIngredients;
 
 BurgerIngredients.propTypes = {
-    ingredients: PropTypes.array.isRequired
+    ingredients: PropTypes.arrayOf(ingredientTypes).isRequired
 }

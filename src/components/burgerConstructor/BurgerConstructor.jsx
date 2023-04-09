@@ -1,7 +1,7 @@
 import React from "react";
 import BurgerListElement from "./BurgerListElement";
 import styleBurgerConstructor from "./burger-constructor.module.css"
-import {arrayOf, string} from "prop-types";
+import PropTypes from "prop-types";
 
 const BurgerConstructor = (props) => {
     return (
@@ -18,5 +18,5 @@ const BurgerConstructor = (props) => {
 export default BurgerConstructor;
 
 BurgerConstructor.propTypes = {
-    selectedIngredients: arrayOf(string).isRequired
+    selectedIngredients: PropTypes.array.isRequired
 }
