@@ -1,0 +1,35 @@
+.modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalOverlay{
+    position: fixed;
+    height: 100%;
+}
+
+.modal.open{
+    height: 100%;
+    display: block;
+}
+
+.modal.close{
+    height: 0;
+    display: none;
+}
+
+.modalBody{
+    box-sizing: border-box;
+    max-height: max-content;
+    background: #1C1C21;
+    border-radius: 40px;
+
+}
