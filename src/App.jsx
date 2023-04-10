@@ -9,20 +9,27 @@ function App() {
 
     const [allIngredients, setAllIngredients] = useState([])
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(null)
     const URL = 'https://norma.nomoreparties.space/api/ingredients';
 
+    const checkResponse = (res) => {
+        return res.ok ? res.json() : res.json()
+            .then((err) => Promise.reject(err));
+    };
 
     const fetchData = async () => {
         setLoading(true)
-        try {
-            setLoading(false)
-            const response = await fetch(URL)
-            const data = await response.json();
-            setAllIngredients(data.data)
-        } catch (e) {
-            setLoading(false)
-            console.log(e)
-        }
+        await fetch(URL)
+            .then(checkResponse)
+            .then((res) => {
+                setLoading(false)
+                setAllIngredients(res.data)
+            })
+            .catch((error) => {
+                setLoading(false)
+                setError(error)
+                console.error(error)
+            })
     }
 
     useEffect(() => {
