@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import AppHeader from "./components/header/AppHeader";
 import BurgerIngredients from "./components/ingredients/BurgerIngredients";
 import BurgerConstructor from "./components/burgerConstructor/BurgerConstructor";
 import styles from './components/global.module.css'
+import {NORMA_API} from "./utils/burger-api";
 
 
 function App() {
@@ -10,7 +11,6 @@ function App() {
     const [allIngredients, setAllIngredients] = useState([])
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
-    const URL = 'https://norma.nomoreparties.space/api/ingredients';
 
     const checkResponse = (res) => {
         return res.ok ? res.json() : res.json()
@@ -19,7 +19,7 @@ function App() {
 
     const fetchData = async () => {
         setLoading(true)
-        await fetch(URL)
+        await fetch(`${NORMA_API}/ingredients`)
             .then(checkResponse)
             .then((res) => {
                 setLoading(false)
