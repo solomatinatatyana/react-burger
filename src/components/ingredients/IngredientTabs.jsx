@@ -1,10 +1,15 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
 
-const IngredientTabs = ({tabClick}) => {
+const IngredientTabs = ({tabClick, inViewBuns, inViewSauces, inViewMain}) => {
 
-    const [current, setCurrent] = React.useState('Булки')
+    const [current, setCurrent] = useState('Булки')
+
+    useEffect(() => {
+        inViewSauces ? setCurrent("Соусы") : inViewBuns ? setCurrent("Булки") : inViewMain && setCurrent("Начинки")
+    }, [inViewSauces, inViewBuns, inViewMain])
+
 
     return (
         <div style={{display: 'flex'}} className="pb-10 mt-5">
@@ -22,7 +27,7 @@ const IngredientTabs = ({tabClick}) => {
             </Tab>
             <Tab value="Начинки" active={current === 'Начинки'} onClick={() => {
                 tabClick('main')
-                setCurrent("Начинки")
+                setCurrent('Начинки')
             }}>
                 <span className="text text_type_main-medium">Начинки</span>
             </Tab>

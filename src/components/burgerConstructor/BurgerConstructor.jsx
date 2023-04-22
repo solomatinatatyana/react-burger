@@ -1,15 +1,34 @@
-import React from "react";
+import React, {useEffect} from "react";
 import BurgerListElement from "./BurgerListElement";
 import styleBurgerConstructor from "./burger-constructor.module.css"
-import PropTypes from "prop-types";
+import {useDispatch, useSelector} from "react-redux";
+import {getAllIngredients} from "../../services/actions/BurgerIngredients";
 
-const BurgerConstructor = ({selectedIngredients}) => {
+
+const BurgerConstructor = () => {
+
+    const {ingredients} = useSelector(store => ({
+        ingredients: store.burgerIngredients.ingredients,
+    }));
+
+
+    const dispatch = useDispatch();
+
+
+    useEffect(() => {
+        dispatch(getAllIngredients())
+    }, [])
+
+
+    /*    useEffect(() => {
+            dispatch(getSelectedIngredients(generateRandomIngredients(ingredients)))
+        }, [ingredients])*/
 
     return (
         <>
             <section className="pl-10 pt-25">
                 <div className={styleBurgerConstructor.burgerList}>
-                    <BurgerListElement selected={selectedIngredients}/>
+                    <BurgerListElement ingredients={ingredients}/>
                 </div>
             </section>
         </>
@@ -17,7 +36,3 @@ const BurgerConstructor = ({selectedIngredients}) => {
 }
 
 export default BurgerConstructor;
-
-BurgerConstructor.propTypes = {
-    selectedIngredients: PropTypes.array.isRequired
-}

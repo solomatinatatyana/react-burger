@@ -2,11 +2,13 @@ import React from "react";
 import imagePath from "../../images/check.svg";
 
 
-const OrderDetails = () => {
+const OrderDetails = ({detail}) => {
     return <div style={{padding: "0 100px 0 100px"}}>
         <div style={{display: "flex", alignItems: "center", justifyContent: "center"}} className="pb-8">
             <p className="text text_type_digits-large"
-               style={{textShadow: "0px 0px 16px rgba(51, 51, 255, 0.25), 0px 0px 8px rgba(51, 51, 255, 0.25), 0px 4px 32px rgba(51, 51, 255, 0.5)"}}>034536</p>
+               style={{textShadow: "0px 0px 16px rgba(51, 51, 255, 0.25), 0px 0px 8px rgba(51, 51, 255, 0.25), 0px 4px 32px rgba(51, 51, 255, 0.5)"}}>
+                {detail?.order.number}
+            </p>
         </div>
         <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
             <p className="text text_type_main-medium">

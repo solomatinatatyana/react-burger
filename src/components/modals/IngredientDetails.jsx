@@ -6,21 +6,23 @@ import ingredientTypes from "../../utils/constants/props.type";
 
 const IngredientDetails = ({cardDetail}) => {
 
+    const detail = cardDetail || {}
+
     return <div style={{padding: "0 100px 0 100px"}}>
         <div className={`${globalStyle.container} pb-8`}>
-            <img src={cardDetail.image} alt={cardDetail.name}/>
+            <img src={detail.image} alt={detail.name}/>
         </div>
         <div className={`${globalStyle.container} pb-8`}>
             <p className="text text_type_main-medium">
-                {cardDetail.name}
+                {cardDetail?.name}
             </p>
         </div>
         <div className={`${globalStyle.container} pb-15`}>
             <div style={{display: "flex"}}>
-                <NutritionInfo nutrition="Калории,ккал" value={cardDetail.calories}/>
-                <NutritionInfo nutrition="Белки, г" value={cardDetail.proteins}/>
-                <NutritionInfo nutrition="Жиры, г" value={cardDetail.fat}/>
-                <NutritionInfo nutrition="Углеводы, г" value={cardDetail.carbohydrates}/>
+                <NutritionInfo nutrition="Калории,ккал" value={detail.calories}/>
+                <NutritionInfo nutrition="Белки, г" value={detail.proteins}/>
+                <NutritionInfo nutrition="Жиры, г" value={detail.fat}/>
+                <NutritionInfo nutrition="Углеводы, г" value={detail.carbohydrates}/>
             </div>
         </div>
     </div>
