@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Tab} from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from "prop-types";
+import globalStyle from '../global.module.css'
 
 const IngredientTabs = ({tabClick, inViewBuns, inViewSauces, inViewMain}) => {
 
@@ -12,7 +13,7 @@ const IngredientTabs = ({tabClick, inViewBuns, inViewSauces, inViewMain}) => {
 
 
     return (
-        <div style={{display: 'flex'}} className="pb-10 mt-5">
+        <div className={`pb-10 mt-5 ${globalStyle.container}`}>
             <Tab value="Булки" active={current === 'Булки'} onClick={() => {
                 tabClick('bun')
                 setCurrent("Булки")
@@ -38,5 +39,8 @@ const IngredientTabs = ({tabClick, inViewBuns, inViewSauces, inViewMain}) => {
 export default IngredientTabs
 
 IngredientTabs.propTypes = {
-    tabClick: PropTypes.func.isRequired
+    tabClick: PropTypes.func.isRequired,
+    inViewBuns: PropTypes.any.isRequired,
+    inViewSauces: PropTypes.any.isRequired,
+    inViewMain: PropTypes.any.isRequired
 }

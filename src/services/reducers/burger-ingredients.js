@@ -3,7 +3,7 @@ import {
     GET_INGREDIENTS_REQUEST,
     GET_INGREDIENTS_SUCCESS,
     RESET_COUNT_BUN,
-} from "../actions/BurgerIngredients";
+} from "../actions/burger-ingredients";
 
 const initialState = {
     ingredients: [],
@@ -32,20 +32,7 @@ export const ingredientsReducer = (state = initialState, action) => {
         case GET_INGREDIENTS_FAILED: {
             return {...state, ingredientsFailed: true, ingredientsRequest: false};
         }
-        /*case INCREMENT_ITEM: {
-            return {
-                ...state,
-                ingredients: state.ingredients.map(item =>
-                    item._id === action._id ? { ...item, count: ++item.count } : item),
-            };
-        }*/
-        /*case DECREMENT_ITEM: {
-            return {
-                ...state,
-                ingredients: state.ingredients.map(item =>
-                    item._id === action._id ? { ...item, count: --item.count } : item),
-            };
-        }*/
+
         case RESET_COUNT_BUN: {
             return {
                 ...state,

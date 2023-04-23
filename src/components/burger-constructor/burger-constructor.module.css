@@ -1,0 +1,38 @@
+.burgerList{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 570px;
+}
+
+.onHover {
+    box-shadow: inset 0px -2px 0px #3C39EC;
+}
+
+.burgerElementContainer{
+    width: 570px;
+}
+
+.burgerTopBunBox{
+    background-color: #2f2f37;
+    border-radius: 88px 88px 40px 40px;
+    width: 570px
+}
+
+.burgerBottomBunBox{
+    background-color: #2f2f37;
+    border-radius: 40px 40px 88px 88px;
+    width: 570px
+}
+
+.burgerIngredientBox{
+    background-color: #2f2f37;
+    border-radius: 40px 40px 40px 40px;
+    width: 570px;
+}
+
+.burgerListIngredientsOuterContainer{
+    display: flex;
+    gap: 10px;
+    height: 50vh;
+}

@@ -4,7 +4,7 @@ import styles from './modal.module.css'
 import PropTypes from "prop-types";
 import {CloseIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import {useDispatch, useSelector} from "react-redux";
-import ModalOverlay from "./ModalOverlay";
+import ModalOverlay from "./modal-overlay";
 import {closeModal} from "../../services/actions/modal";
 
 
@@ -14,7 +14,7 @@ const Modal = ({isOpened, header, children, onClose}) => {
 
     const dispatch = useDispatch();
 
-    const { resetContentModalFunc } = useSelector(state => state.modal);
+    const {resetContentModalFunc} = useSelector(state => state.modal);
 
     const handleKey = useCallback((event) => {
         if (event.key === 'Escape') {
@@ -36,12 +36,11 @@ const Modal = ({isOpened, header, children, onClose}) => {
 
     return ReactDOM.createPortal(
         (
-            <>
-                <ModalOverlay onClose={handleClose} isOpened={isOpened}/>
+            <section>
                 <div className={`${styles.modal}`}>
                     <div className={`${styles.modalBody} pl-10 pr-10 pt-10`}>
-                        <div style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}
-                             className="pb-10">
+                        <div
+                            className={`pb-10 ${styles.modalHeader}`}>
                             <p className="text text_type_main-large">
                                 {header}
                             </p>
@@ -50,8 +49,8 @@ const Modal = ({isOpened, header, children, onClose}) => {
                         {children}
                     </div>
                 </div>
-
-            </>
+                <ModalOverlay onClose={handleClose} isOpened={isOpened}/>
+            </section>
         ),
         modalRoot
     )

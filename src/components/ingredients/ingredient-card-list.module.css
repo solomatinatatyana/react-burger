@@ -1,0 +1,5 @@
+.ingredientCardWrapper{
+    display: flex;
+    flex-wrap: wrap;
+    width: 272px;
+}

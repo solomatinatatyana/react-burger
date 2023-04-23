@@ -1,14 +1,14 @@
-import React, {useEffect, useMemo, useState} from "react";
-import IngredientCardList from "./IngredientCardList";
-import IngredientDetails from "../modals/IngredientDetails";
-import IngredientTabs from "./IngredientTabs";
-import Modal from "../modals/Modal";
+import React, {useMemo, useState} from "react";
+import IngredientCardList from "./ingredient-card-list";
+import IngredientDetails from "../modals/ingredient-details";
+import IngredientTabs from "./ingredient-tabs";
+import Modal from "../modals/modal";
 import {useDispatch, useSelector} from "react-redux";
-import {getAllIngredients} from "../../services/actions/BurgerIngredients";
 import {Loader} from "../loader/loader";
-import {getIngredientInfo} from "../../services/actions/IngredientDetails";
+import {getIngredientInfo} from "../../services/actions/ingredient-details";
 import {useInView} from "react-intersection-observer";
-
+import globalStyle from '../global.module.css'
+import styles from './burger-ingredients.module.css'
 
 const BurgerIngredients = () => {
 
@@ -33,10 +33,6 @@ const BurgerIngredients = () => {
     const {ref: refMain, inView: inViewMain} = useInView(options);
 
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getAllIngredients())
-    }, [])
 
     const bunsList = ingredients.filter(b => b.type === "bun")
     const sauceList = ingredients.filter(b => b.type === "sauce")
@@ -81,18 +77,16 @@ const BurgerIngredients = () => {
 
     return (
         <>
-            <section className="pr-10"
-                     style={{justifyContent: "center", alignItems: "center", width: "35%", boxSizing: "border-box"}}>
-                <div style={{display: "flex", flexDirection: "column"}}>
+            <section className={`pr-10  ${globalStyle.section}`}>
+                <div className={globalStyle.baseContainerColumn}>
                     <h1 className="pt-10 pb-5 mr-4 text text_type_main-large">Соберите бургер</h1>
                     <IngredientTabs
                         inViewBuns={inViewBuns}
                         inViewSauces={inViewSauces}
                         inViewMain={inViewMain}
                         tabClick={handleTabClick}/>
-                    <div style={{display: "flex", overflow: "hidden", height: "60vh"}}>
-                        <div style={{display: "flex", flexDirection: "column", height: "100%", overflowY: "scroll"}}
-                             className="custom-scroll">
+                    <div className={styles.ingredientsContainerOuter}>
+                        <div className={`custom-scroll ${globalStyle.containerInner}`}>
                             {ingredientCards}
                         </div>
                     </div>

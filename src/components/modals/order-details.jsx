@@ -1,29 +1,31 @@
 import React from "react";
 import imagePath from "../../images/check.svg";
+import globalStyle from '../global.module.css'
+import orderResponseTypes from "../../utils/constants/props.type";
 
 
 const OrderDetails = ({detail}) => {
-    return <div style={{padding: "0 100px 0 100px"}}>
-        <div style={{display: "flex", alignItems: "center", justifyContent: "center"}} className="pb-8">
+    return <div className={globalStyle.modalDetailsWrapper}>
+        <div className={`pb-8 ${globalStyle.container}`}>
             <p className="text text_type_digits-large"
                style={{textShadow: "0px 0px 16px rgba(51, 51, 255, 0.25), 0px 0px 8px rgba(51, 51, 255, 0.25), 0px 4px 32px rgba(51, 51, 255, 0.5)"}}>
                 {detail?.order.number}
             </p>
         </div>
-        <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+        <div className={globalStyle.container}>
             <p className="text text_type_main-medium">
                 идентификатор заказа
             </p>
         </div>
-        <div style={{display: "flex", alignItems: "center", justifyContent: "center"}} className="pt-15 pb-15">
+        <div className={`pt-15 pb-15 ${globalStyle.container}`}>
             <img src={imagePath} alt={"Check"}/>
         </div>
-        <div style={{display: "flex", alignItems: "center", justifyContent: "center"}} className="pb-2">
+        <div className={`pb-2 ${globalStyle.container}`}>
             <p className="text text_type_main-default">
                 Ваш заказ начали готовить
             </p>
         </div>
-        <div style={{display: "flex", alignItems: "center", justifyContent: "center"}} className="pb-30">
+        <div className={`pb-30 ${globalStyle.container}`}>
             <p className="text text_type_main-default text_color_inactive">
                 Дождитесь готовности на орбитальной станции
             </p>
@@ -32,3 +34,7 @@ const OrderDetails = ({detail}) => {
 }
 
 export default OrderDetails;
+
+OrderDetails.propTypes = {
+    detail: orderResponseTypes.isRequired
+}

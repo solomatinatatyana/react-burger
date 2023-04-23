@@ -9,6 +9,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+}
+
+.baseContainerColumn{
+    display: flex;
+    flex-direction: column;
 }
 
 .containerInner{
@@ -20,4 +26,13 @@
 
 .containerOuter{
 
+}
+
+.section {
+    width: 600px;
+    overflow: hidden;
+}
+
+.modalDetailsWrapper{
+    padding: 0 100px;
 }

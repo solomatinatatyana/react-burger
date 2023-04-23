@@ -1,4 +1,4 @@
-import {CHECKOUT_FAILED, CHECKOUT_REQUEST, CHECKOUT_SUCCESS} from "../actions/OrderDetails";
+import {CHECKOUT_FAILED, CHECKOUT_REQUEST, CHECKOUT_SUCCESS} from "../actions/order-details";
 
 const initialState = {
     order: null,

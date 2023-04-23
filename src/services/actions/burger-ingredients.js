@@ -31,20 +31,6 @@ export const getAllIngredients = () => {
     };
 }
 
-/*export const incrementIngredient = (id) => {
-    return {
-        type: INCREMENT_ITEM,
-        _id: id
-    }
-};
-
-export const decrementIngredient = (id) => {
-    return {
-        type: DECREMENT_ITEM,
-        _id: id
-    }
-};*/
-
 export const resetCountBun = (id) => {
     return {
         type: RESET_COUNT_BUN,

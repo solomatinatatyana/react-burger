@@ -1,28 +1,35 @@
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import {Button, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
-import OrderDetails from "../modals/OrderDetails";
+import OrderDetails from "../modals/order-details";
 import globalStyle from "../global.module.css";
 import styles from "./burger-constructor.module.css"
-import Modal from "../modals/Modal";
+import Modal from "../modals/modal";
 import {useDispatch, useSelector} from "react-redux";
-import {checkout} from "../../services/actions/OrderDetails";
+import {checkout} from "../../services/actions/order-details";
 import {Loader} from "../loader/loader";
-import {addIngredient, shuffleIngredient, updateBun} from "../../services/actions/BurgerConstructor";
+import {
+    addIngredient,
+    getSelectedOtherIngredients,
+    shuffleIngredient,
+    updateBun
+} from "../../services/actions/burger-constructor";
 import {useDrop} from "react-dnd";
-import BurgerElement from "./BurgerElement";
-import {resetCountBun} from "../../services/actions/BurgerIngredients";
+import BurgerElement from "./burger-element";
+import {resetCountBun} from "../../services/actions/burger-ingredients";
 
-const BurgerListElement = ({ingredients}) => {
+const BurgerListElement = () => {
 
     const [isOpen, setIsOpen] = useState(false)
 
     const {
-        order, checkoutRequest, checkoutFailed, selectedIngredients, selectedBuns
+        order, checkoutRequest, checkoutFailed, selectedIngredients, ingredients, selectedOtherIngredients
     } = useSelector(store => ({
         order: store.orderDetail.order,
         checkoutRequest: store.orderDetail.checkoutRequest,
         checkoutFailed: store.orderDetail.checkoutFailed,
-        selectedIngredients: store.burgerConstructor.selectedIngredients
+        ingredients: store.burgerIngredients.ingredients,
+        selectedIngredients: store.burgerConstructor.selectedIngredients,
+        selectedOtherIngredients: store.burgerConstructor.selectedOtherIngredients
     }))
 
     const dispatch = useDispatch()
@@ -68,9 +75,11 @@ const BurgerListElement = ({ingredients}) => {
         </Modal>
     )
 
-    const moveIngredientToBurger = (_id) => {
-        console.log("item", _id)
+    useEffect(() => {
+        dispatch(getSelectedOtherIngredients(getNotBuns()))
+    }, [selectedIngredients])
 
+    const moveIngredientToBurger = (_id) => {
         dispatch(
             addIngredient(
                 {
@@ -82,21 +91,12 @@ const BurgerListElement = ({ingredients}) => {
         );
     }
 
-    /*    useEffect(() => {
-            dispatch(getSelectedOtherIngredients(getNotBuns()))
-            dispatch(getSelectedBuns(getBuns()))
-        }, [selectedIngredients])*/
-
-
     const moveBun = (_id) => {
         ingredients[0]?.type === 'bun' && dispatch(resetCountBun(ingredients[0]._id));
         dispatch(updateBun(
             {...ingredients.filter((item) => item._id === _id)[0], count: 2, id: crypto.randomUUID()}
         ));
-        //dispatch(getSelectedBuns(getBuns()))
     }
-
-    console.log("selectedBuns: ", selectedBuns)
 
     const [{isHoverBunTop}, dropBunTopTarget] = useDrop({
         accept: 'bun',
@@ -138,30 +138,35 @@ const BurgerListElement = ({ingredients}) => {
 
     return (<>
             <div className={`${globalStyle.containerColumn} pb-10`}>
-
                 <div className={`${globalStyle.containerColumn} pt-2`}>
                     <div style={{borderColor}} ref={dropBunTopTarget} className={`${isHoverBunTop && styles.onHover}`}>
-                        {getBuns()[0] ? (<BurgerElement element={getBuns()[0]} type={"top"} extraClass={"pt-4"}/>) :
-                            (<div className={styles.burgerBunTop}>
-                                <h3 className="pb-4 pt-4 ml-9 mr-1 ">Перетащите Булку</h3></div>)}
+                        {getBuns()[0] ? (
+                                <BurgerElement element={getBuns()[0]} type={"top"} extraClass={"pt-4"}/>) :
+                            (<div className={`${styles.burgerTopBunBox}`}>
+                                <h3 className="pb-4 pt-4 ml-9 mr-1 ">Перетащите Булку</h3>
+                            </div>)}
                         {isHoverBunTop && <p>Булку сюда</p>}
                     </div>
 
-                    <div style={{display: "flex", gap: "10px", overflow: "hidden", height: "50vh"}}>
-                        <div className={`${globalStyle.containerInner} custom-scroll ${isHover && styles.onHover}`}
+                    <div className={styles.burgerListIngredientsOuterContainer}>
+                        <div className={`${globalStyle.containerInner} custom-scroll  ${isHover && styles.onHover}`}
                              ref={dropTarget}>
                             {
-                                selectedIngredients.length !== 0 ? selectedIngredients.filter((el) => el.type !== "bun").map((el, index) =>
+                                selectedOtherIngredients?.length !== 0 ? selectedIngredients.filter((el) => el.type !== "bun").map((el, index) =>
                                         <BurgerElement key={el.id} index={index} element={el} extraClass={"pb-4"}
                                                        moveListItem={moveListIngredient}/>) :
-                                    (<h3 className="pb-4 pt-4 ml-9 mr-1">Перетащите ингредиенты</h3>)
+                                    (<div className={`${styles.burgerIngredientBox}`}>
+                                        <h3 className="pb-4 pt-4 ml-9 mr-1 pr-2 ">Перетащите ингредиенты</h3>
+                                    </div>)
                             }
                             {isHover && <p>Сюда ингридиент</p>}
                         </div>
                     </div>
                     <div ref={dropBunBottomTarget} className={`${isHoverBunBottom && styles.onHover}`}>
-                        {getBuns()[0] ? (<BurgerElement element={getBuns()[0]} type={"bottom"}/>) :
-                            (<h3 className="pb-4 pt-4 ml-9 mr-1">Перетащите Булку</h3>)}
+                        {getBuns()[0] ? (
+                                <BurgerElement element={getBuns()[0]} type={"bottom"}/>) :
+                            (<div className={`${styles.burgerBottomBunBox}`}><h3
+                                className="pb-4 pt-4 ml-9 mr-2 ">Перетащите Булку</h3></div>)}
                         {isHoverBunBottom && <p>Булку сюда</p>}
                     </div>
                 </div>

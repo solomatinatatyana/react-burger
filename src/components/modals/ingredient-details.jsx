@@ -1,6 +1,6 @@
 import React from "react";
 import globalStyle from "../global.module.css";
-import NutritionInfo from "./NutritionInfo";
+import NutritionInfo from "./nutrition-info";
 import ingredientTypes from "../../utils/constants/props.type";
 
 
@@ -8,7 +8,7 @@ const IngredientDetails = ({cardDetail}) => {
 
     const detail = cardDetail || {}
 
-    return <div style={{padding: "0 100px 0 100px"}}>
+    return <div className={globalStyle.modalDetailsWrapper}>
         <div className={`${globalStyle.container} pb-8`}>
             <img src={detail.image} alt={detail.name}/>
         </div>
@@ -18,7 +18,7 @@ const IngredientDetails = ({cardDetail}) => {
             </p>
         </div>
         <div className={`${globalStyle.container} pb-15`}>
-            <div style={{display: "flex"}}>
+            <div className={globalStyle.container}>
                 <NutritionInfo nutrition="Калории,ккал" value={detail.calories}/>
                 <NutritionInfo nutrition="Белки, г" value={detail.proteins}/>
                 <NutritionInfo nutrition="Жиры, г" value={detail.fat}/>

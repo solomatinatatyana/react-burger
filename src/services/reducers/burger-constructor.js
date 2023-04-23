@@ -1,4 +1,10 @@
-import {ADD_INGREDIENT, DELETE_INGREDIENT, MOVE_INGREDIENT, UPDATE_BUN,} from "../actions/BurgerConstructor";
+import {
+    ADD_INGREDIENT,
+    DELETE_INGREDIENT,
+    MOVE_INGREDIENT,
+    UPDATE_BUN, UPDATE_SELECTED_BUNS,
+    UPDATE_SELECTED_OTHER_INGREDIENTS,
+} from "../actions/burger-constructor";
 
 const initialState = {
     selectedIngredients: [],
@@ -26,25 +32,19 @@ export const constructorReducer = (state = initialState, action) => {
                 selectedIngredients: copiedSelectedIngredients
             };
         }
-        /*        case UPDATE_SELECTED_INGREDIENTS: {
-                    return {
-                        ...state,
-                        selectedIngredients: action.payload,
 
-                    };
-                }*/
-        /*        case UPDATE_SELECTED_OTHER_INGREDIENTS: {
-                    return {
-                        ...state,
-                        selectedOtherIngredients: action.payload,
-                    };
-                }
-                case UPDATE_SELECTED_BUNS: {
-                    return {
-                        ...state,
-                        selectedBuns: action.payload,
-                    };
-                }*/
+        case UPDATE_SELECTED_OTHER_INGREDIENTS: {
+            return {
+                ...state,
+                selectedOtherIngredients: action.payload,
+            };
+        }
+        case UPDATE_SELECTED_BUNS: {
+            return {
+                ...state,
+                selectedBuns: action.payload,
+            };
+        }
         case MOVE_INGREDIENT: {
             const updatedIngredients = state.selectedIngredients;
             const dragItem = updatedIngredients[action.dragIndex];

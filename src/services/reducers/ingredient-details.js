@@ -1,4 +1,4 @@
-import {GET_INGREDIENT_INFO} from "../actions/IngredientDetails";
+import {GET_INGREDIENT_INFO} from "../actions/ingredient-details";
 
 const initialState = {
     ingredientInfo: {
