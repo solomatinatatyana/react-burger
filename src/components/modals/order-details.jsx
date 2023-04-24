@@ -1,7 +1,7 @@
 import React from "react";
 import imagePath from "../../images/check.svg";
 import globalStyle from '../global.module.css'
-import orderResponseTypes from "../../utils/constants/props.type";
+import orderResponseTypes from "../../utils/constants/props-order.type";
 
 
 const OrderDetails = ({detail}) => {
@@ -36,5 +36,5 @@ const OrderDetails = ({detail}) => {
 export default OrderDetails;
 
 OrderDetails.propTypes = {
-    detail: orderResponseTypes.isRequired
+    detail: orderResponseTypes
 }

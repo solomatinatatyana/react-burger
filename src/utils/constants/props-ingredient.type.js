@@ -14,15 +14,4 @@ const ingredientTypes = PropTypes.shape({
     count: PropTypes.number
 });
 
-const orderTypes = PropTypes.shape({
-    number: PropTypes.number.isRequired
-})
-
-const orderResponseTypes = PropTypes.shape({
-    success: PropTypes.bool.isRequired,
-    name: PropTypes.string.isRequired,
-    order: orderTypes.isRequired
-})
-
-export default {ingredientTypes, orderResponseTypes};
-
+export default ingredientTypes;

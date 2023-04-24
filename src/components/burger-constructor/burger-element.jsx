@@ -4,7 +4,7 @@ import {useDrag, useDrop} from "react-dnd";
 import {deleteIngredient} from "../../services/actions/burger-constructor";
 import {useDispatch} from "react-redux";
 import styles from './burger-constructor.module.css'
-import ingredientTypes from "../../utils/constants/props.type";
+import ingredientTypes from "../../utils/constants/props-ingredient.type";
 import PropTypes from "prop-types";
 
 const BurgerElement = ({element, index, type, extraClass, moveListItem}) => {

@@ -2,10 +2,10 @@ import React from "react";
 import {Counter, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import globalStyle from "../global.module.css";
 import PropTypes from "prop-types";
-import ingredientTypes from "../../utils/constants/props.type";
 import {useSelector} from "react-redux";
 import {useDrag} from "react-dnd";
 import styles from './ingredient-card.module.css'
+import ingredientTypes from "../../utils/constants/props-ingredient.type";
 
 const IngredientCard = (props) => {
 
@@ -65,7 +65,7 @@ const IngredientCard = (props) => {
                     return ingredient._id === cardElem._id &&
                         count !== 0 &&
                         <Counter key={ingredient.id}
-                                 count={ingredient.type !== 'bun' ? countIngredients(ingredient._id) : countBuns(ingredient.id)}
+                                 count={ingredient.type !== 'bun' ? countIngredients(ingredient._id) : countBuns(ingredient._id)}
                                  size="default" extraClass="m-1"/>
                 })}
                 <img src={cardElem.image} alt={cardElem.name}/>

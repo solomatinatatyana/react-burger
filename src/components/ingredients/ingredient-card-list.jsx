@@ -2,8 +2,8 @@ import React, {forwardRef} from "react";
 import IngredientCard from "./ingredient-card";
 import ingredientsStyle from "./burger-ingredients.module.css"
 import PropTypes from "prop-types";
-import ingredientTypes from "../../utils/constants/props.type";
 import styles from './ingredient-card-list.module.css'
+import ingredientTypes from "../../utils/constants/props-ingredient.type";
 
 
 const IngredientCardList = forwardRef(({ingredients, onClick, title, inView}, ref) => {

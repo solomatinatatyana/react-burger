@@ -1,7 +1,7 @@
 import React from "react";
 import globalStyle from "../global.module.css";
 import NutritionInfo from "./nutrition-info";
-import ingredientTypes from "../../utils/constants/props.type";
+import ingredientTypes from "../../utils/constants/props-ingredient.type";
 
 
 const IngredientDetails = ({cardDetail}) => {
