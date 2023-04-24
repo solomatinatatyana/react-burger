@@ -9,18 +9,25 @@ import PropTypes from "prop-types";
 
 const BurgerElement = ({element, index, type, extraClass, moveListItem}) => {
 
+    const {id, _id} = element;
+
     const [{isDragging}, dragRef] = useDrag({
         type: 'item',
-        item: {index},
+        item: {index, _id},
         collect: (monitor) => ({
             isDragging: monitor.isDragging(),
         }),
     })
 
-    const {id} = element;
 
-    const [spec, dropRef] = useDrop({
+
+    const [{ handlerId }, dropRef] = useDrop({
         accept: 'item',
+        collect(monitor) {
+            return {
+                handlerId: monitor.getHandlerId(),
+            }
+        },
         hover: (item, monitor) => {
             if (!ref.current) return;
             const dragIndex = item.index;
@@ -46,7 +53,7 @@ const BurgerElement = ({element, index, type, extraClass, moveListItem}) => {
     })
 
     const ref = useRef(null)
-    const dragDropRef = dragRef(dropRef(ref))
+    dragRef(dropRef(ref))
 
     const opacity = isDragging ? 0 : 1
 
@@ -58,9 +65,9 @@ const BurgerElement = ({element, index, type, extraClass, moveListItem}) => {
 
     return (
         <div key={element.id} className={`p-1 ${styles.burgerElementContainer}`}  {...(element.type !== 'bun' && {
-            ref: dragDropRef
-        })} style={{opacity}}>
-            {element.type !== 'bun' && <DragIcon type="primary" draggable/>}
+            ref: ref
+        })} style={{opacity}} data-handler-id={handlerId}>
+            {element.type !== 'bun' && <DragIcon type="primary"/>}
             <ConstructorElement
                 type={type}
                 extraClass={extraClass}
