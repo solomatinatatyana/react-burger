@@ -1,23 +1,34 @@
-.container{
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.containerColumn{
+.containerColumn {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
-.containerInner{
+.baseContainerColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+.containerInner {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
     height: 100%;
 }
 
-.containerOuter{
+.section {
+    width: 600px;
+    overflow: hidden;
+}
 
+.modalDetailsWrapper {
+    padding: 0 100px;
 }

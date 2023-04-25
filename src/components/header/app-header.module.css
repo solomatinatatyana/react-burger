@@ -18,7 +18,7 @@ div .container {
     flex-direction: row;
     height: 56px;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     padding: 16px 20px;
 }
 
@@ -28,7 +28,22 @@ div .navigation {
     gap: 8px;
 }
 
+.navigationPaddingOrderBlock{
+    display: flex;
+    padding-right: 150px;
+}
+
+.navigationPaddingUserBlock{
+    display: flex;
+    padding-left: 275px;
+    gap: 8px;
+}
+
 .a {
     text-decoration: none;
     color: white;
+}
+
+.logo{
+    padding: 16px 20px
 }

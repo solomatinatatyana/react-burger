@@ -1,0 +1,76 @@
+.burgerList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 570px;
+}
+
+.burgerElementContainer {
+    width: 570px;
+}
+
+.burgerTopBunBox {
+    background-color: #2f2f37;
+    border-radius: 88px 88px 40px 40px;
+    width: 570px
+}
+
+.burgerBottomBunBox {
+    background-color: #2f2f37;
+    border-radius: 40px 40px 88px 88px;
+    width: 570px
+}
+
+.burgerIngredientBox {
+    background-color: #2f2f37;
+    border-radius: 40px 40px 40px 40px;
+    width: 570px;
+}
+
+.burgerListIngredientsOuterContainer {
+    display: flex;
+    gap: 10px;
+    height: 50vh;
+}
+
+.burgerMakeOrderContainer{
+    align-self: flex-end;
+}
+
+.boxMain {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    margin-top: 100px;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+.onHover {
+    opacity: .5;
+}
+
+.elements {
+    display: flex;
+    flex-direction: column;
+    max-height: 464px;
+    overflow: auto;
+    box-sizing: content-box;
+}
+
+.start {
+    text-align: center;
+    border: 1px solid rgba(76, 76, 255, 1);
+    border-radius: 30px;
+    opacity: .5;
+}
+
+.start:hover {
+    opacity: 1;
+}
+
+.plus {
+    opacity: .5;
+}

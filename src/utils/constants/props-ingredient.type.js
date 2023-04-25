@@ -11,6 +11,7 @@ const ingredientTypes = PropTypes.shape({
     image: PropTypes.string.isRequired,
     image_mobile: PropTypes.string,
     image_large: PropTypes.string,
+    count: PropTypes.number
 });
 
 export default ingredientTypes;
