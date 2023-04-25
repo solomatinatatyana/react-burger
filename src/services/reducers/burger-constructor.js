@@ -6,12 +6,31 @@ import {
     UPDATE_SELECTED_OTHER_INGREDIENTS,
 } from "../actions/burger-constructor";
 
+const initialIngredient = {
+    carbohydrates: 0,
+    calories: 0,
+    fat: 0,
+    image: '',
+    image_large: '',
+    image_mobile: '',
+    name: '',
+    price: 0,
+    proteins: 0,
+    type: 'blank',
+    __v: 0,
+    _id: '',
+    count: 0,
+    id: ''
+};
+
 const initialState = {
-    selectedIngredients: [],
+    selectedIngredients: [initialIngredient],
     selectedBuns: [],
     selectedOtherIngredients: [],
     ingredient: []
 };
+
+
 
 export const constructorReducer = (state = initialState, action) => {
     switch (action.type) {

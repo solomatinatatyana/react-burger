@@ -134,43 +134,53 @@ const BurgerListElement = () => {
         },
         [])
 
-    const borderColor = isHover ? 'lightgreen' : 'transparent';
+    const isBunContent = selectedIngredients[0]?.type === 'bun';
+    const isIngredientContent = selectedIngredients?.length > 1;
+
+    const bunPlace = `${isHoverBunTop || isHoverBunBottom ? styles.plus : ''}`;
+    const bunStart = `${isHoverBunTop || isHoverBunBottom ? styles.onHover : ''}`;
+
+    const ingredientsPlace = `${styles.elements} ${isIngredientContent && isHover ? styles.plus : ''}`;
 
     return (<>
             <div className={`${globalStyle.containerColumn} pb-10`}>
                 <div className={`${globalStyle.containerColumn} pt-2`}>
-                    <div style={{borderColor}} ref={dropBunTopTarget} className={`${isHoverBunTop && styles.onHover}`}>
-                        {getBuns()[0] ? (
-                                <BurgerElement element={getBuns()[0]} type={"top"} extraClass={"pt-4"}/>) :
-                            (<div className={`${styles.burgerTopBunBox}`}>
-                                <h3 className="pb-4 pt-4 ml-9 mr-1 ">Перетащите Булку</h3>
-                            </div>)}
-                        {isHoverBunTop && <p>Булку сюда</p>}
+                    <div ref={dropBunTopTarget} className={`${isHoverBunTop && styles.onHover}`}>
+                        {isBunContent
+                            ? <div className={bunPlace}><
+                                BurgerElement element={getBuns()[0]} type={"top"} extraClass={"pt-4"}/>
+                            </div>
+                            : (<div className={`${styles.burgerTopBunBox}`}><h3
+                                className={`${bunStart} pb-4 pt-4 ml-9 mr-1 `}>Перетащите булку</h3></div>)
+                        }
                     </div>
 
-                    <div className={styles.burgerListIngredientsOuterContainer}>
-                        <div className={`${globalStyle.containerInner} custom-scroll  ${isHover && styles.onHover}`}
-                             ref={dropTarget}>
-                            {
-                                selectedOtherIngredients?.length !== 0 ? selectedIngredients.filter((el) => el.type !== "bun").map((el, index) =>
-                                        <BurgerElement key={el.id} index={index} element={el} extraClass={"pb-4"}
-                                                       moveListItem={moveListIngredient}/>) :
-                                    (<div className={`${styles.burgerIngredientBox}`}>
-                                        <h3 className="pb-4 pt-4 ml-9 mr-1 pr-2 ">Перетащите ингредиенты</h3>
-                                    </div>)
-                            }
-                            {isHover && <p>Сюда ингридиент</p>}
-                        </div>
+                    <div className={`${ingredientsPlace} custom-scroll ${isHover && styles.onHover}`}
+                         ref={dropTarget}>
+                        {isIngredientContent
+                            ? selectedIngredients.map((item, index) =>
+                                item.type !== 'bun'
+                                && item.type !== 'blank'
+                                && <BurgerElement element={item} key={item.id} index={index} extraClass={"pb-4"}
+                                                  moveListItem={moveListIngredient}/>)
+                            : (<div className={`${styles.burgerIngredientBox}`}>
+                                <h3 className={` pb-1 pt-1 ml-9 mr-1 pr-2 `}>Перетащите ингредиенты</h3>
+                            </div>)
+                        }
                     </div>
+
                     <div ref={dropBunBottomTarget} className={`${isHoverBunBottom && styles.onHover}`}>
-                        {getBuns()[0] ? (
-                                <BurgerElement element={getBuns()[0]} type={"bottom"}/>) :
-                            (<div className={`${styles.burgerBottomBunBox}`}><h3
-                                className="pb-4 pt-4 ml-9 mr-2 ">Перетащите Булку</h3></div>)}
-                        {isHoverBunBottom && <p>Булку сюда</p>}
+                        {isBunContent
+                            ?
+                            <div className={bunPlace}>
+                                <BurgerElement element={getBuns()[0]} type={"bottom"} extraClass={"pb-4"}/>
+                            </div>
+                            : (<div className={`${styles.burgerBottomBunBox}`}>
+                                <h3 className={`${bunStart} pb-4 pt-4 ml-9 mr-2 `}>Перетащите булку</h3>
+                            </div>)
+                        }
                     </div>
                 </div>
-
             </div>
             <div className={globalStyle.container}>
                 <div className={`${globalStyle.container} pr-10`}>
