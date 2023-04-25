@@ -17,6 +17,13 @@
     flex-direction: column;
 }
 
+.containerInner {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 100%;
+}
+
 .section {
     width: 600px;
     overflow: hidden;

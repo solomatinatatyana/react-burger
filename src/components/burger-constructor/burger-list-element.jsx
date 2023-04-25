@@ -182,7 +182,7 @@ const BurgerListElement = () => {
                     </div>
                 </div>
             </div>
-            <div className={globalStyle.container}>
+            <div className={`${globalStyle.container} ${styles.burgerMakeOrderContainer}`}>
                 <div className={`${globalStyle.container} pr-10`}>
                     <span className="text text_type_main-medium pr-2">
                         {selectedIngredients ? getCommonPrice() : 0}
