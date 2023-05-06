@@ -1,0 +1,33 @@
+.profilePageWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+
+    position: absolute;
+    width: 480px;
+    height: 430px;
+    left: calc(50% - 480px/2);
+    top: 288px;
+}
+
+.boxProfile {
+    display: grid;
+    grid-template-columns: 320px 844px;
+    width: 100%;
+    gap: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.span {
+    display: inline-block;
+    width: 100%;
+    margin-top: 80px;
+}
+
+.textColorGrey{
+    color: #8585AD;
+    opacity: 0.4;
+}

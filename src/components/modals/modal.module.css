@@ -20,7 +20,7 @@
     z-index: 1;
 }
 
-.modal.open{
+/*.modal.open{
     height: 100%;
     display: block;
 }
@@ -28,7 +28,7 @@
 .modal.close{
     height: 0;
     display: none;
-}
+}*/
 
 .modalBody{
     box-sizing: border-box;

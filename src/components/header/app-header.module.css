@@ -8,7 +8,7 @@
     box-sizing: border-box;
 }
 
-.outerContainer{
+.outerContainer {
     padding-inline-start: 100px;
     padding-inline-end: 126px;
 }
@@ -28,22 +28,35 @@ div .navigation {
     gap: 8px;
 }
 
-.navigationPaddingOrderBlock{
+.navigationPaddingOrderBlock {
     display: flex;
     padding-right: 150px;
 }
 
-.navigationPaddingUserBlock{
+.navigationPaddingUserBlock {
     display: flex;
     padding-left: 275px;
     gap: 8px;
 }
 
-.a {
+.active {
     text-decoration: none;
     color: white;
 }
 
-.logo{
+.logo {
     padding: 16px 20px
 }
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover{
+    color: white;
+}
+
+a {
+    color: #8585AD;
+}
+
