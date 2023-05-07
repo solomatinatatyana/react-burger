@@ -5,11 +5,12 @@ import {Navigate, useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {getForgotPasswordRequest} from "../../services/actions/forgot-password";
 import {isLogged} from "../../utils/utils";
+import {useForm} from "../../hooks/useForm";
 
 const formData = {email: ""}
 
 const ForgotPasswordPage = () => {
-    const [values, setValues] = React.useState(formData)
+    const {values, handleChange} = useForm(formData)
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -20,11 +21,6 @@ const ForgotPasswordPage = () => {
         return (
             <Navigate to={'/'}/>
         );
-    }
-
-    const handleChange = (e) => {
-        const {value, name} = e.target;
-        setValues({...values, [name]: value});
     }
 
     const onSubmit = (e) => {

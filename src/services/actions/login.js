@@ -1,4 +1,4 @@
-import {checkResponse, checkSuccess, NORMA_API} from "../../utils/burger-api";
+import {checkResponse, checkSuccess, NORMA_API, request} from "../../utils/burger-api";
 import {setCookie} from "../../utils/utils";
 import {getProfile} from "./profile";
 
@@ -10,7 +10,7 @@ export const loginRequest = (form, navigate) => {
         dispatch({
             type: LOGIN_REQUEST
         });
-        fetch(`${NORMA_API}/auth/login`, {
+        request("/auth/login", {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -22,8 +22,6 @@ export const loginRequest = (form, navigate) => {
             referrerPolicy: 'no-referrer',
             body: JSON.stringify(form)
         })
-            .then(checkResponse)
-            .then(checkSuccess)
             .then(res => {
                 setCookie('accessToken', res.accessToken.slice('Bearer '.length), {'max-age': 1200})
                 setCookie('refreshToken', res.refreshToken)

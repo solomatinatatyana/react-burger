@@ -2,7 +2,9 @@ import {
     ADD_INGREDIENT,
     DELETE_INGREDIENT,
     MOVE_INGREDIENT,
-    UPDATE_BUN, UPDATE_SELECTED_BUNS,
+    RESET_BURGER_CONSTRUCTOR,
+    UPDATE_BUN,
+    UPDATE_SELECTED_BUNS,
     UPDATE_SELECTED_OTHER_INGREDIENTS,
 } from "../actions/burger-constructor";
 
@@ -29,7 +31,6 @@ const initialState = {
     selectedOtherIngredients: [],
     ingredient: []
 };
-
 
 
 export const constructorReducer = (state = initialState, action) => {
@@ -62,6 +63,11 @@ export const constructorReducer = (state = initialState, action) => {
             return {
                 ...state,
                 selectedBuns: action.payload,
+            };
+        }
+        case RESET_BURGER_CONSTRUCTOR: {
+            return {
+                selectedIngredients: [initialIngredient]
             };
         }
         case MOVE_INGREDIENT: {

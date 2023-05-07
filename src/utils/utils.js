@@ -19,7 +19,9 @@ export const generateRandomBun = (list) => {
 export const generateRandomIngredients = (list) => {
     const notBuns = list?.filter(b => b.type !== "bun");
     let targetIngredientList = getRandom(Math.floor(Math.random() * notBuns.length), notBuns)
-    if(list.length!==0) {targetIngredientList.push(generateRandomBun(list))}
+    if (list.length !== 0) {
+        targetIngredientList.push(generateRandomBun(list))
+    }
     return targetIngredientList;
 }
 
@@ -57,19 +59,28 @@ export const getRefreshToken = () => getCookie('refreshToken');
 
 export const getAllTokens = () => {
     let accessToken = getCookie('accessToken');
-    if (accessToken !== undefined) { accessToken = 'Bearer ' + accessToken };
-    return { accessToken: accessToken, refreshToken: getCookie('refreshToken') };
+    if (accessToken !== undefined) {
+        accessToken = 'Bearer ' + accessToken
+    }
+    return {accessToken: accessToken, refreshToken: getCookie('refreshToken')};
 }
 
 export const isLogged = () => getRefreshToken() !== undefined;
 
 export const deleteCookies = () => {
-    setCookie('name', '', { 'max-age': 0 });
-    setCookie('email', '', { 'max-age': 0 });
-    setCookie('password', '', { 'max-age': 0 });
-    setCookie('accessToken', '', { 'max-age': 0 });
-    setCookie('refreshToken', '', { 'max-age': 0 });
+    setCookie('name', '', {'max-age': 0});
+    setCookie('email', '', {'max-age': 0});
+    setCookie('password', '', {'max-age': 0});
+    setCookie('accessToken', '', {'max-age': 0});
+    setCookie('refreshToken', '', {'max-age': 0});
 }
 
+export const setOptions = (method, body, header) => {
+    const options = {headers: {'Content-Type': 'application/json'}}
+    if (method !== undefined) options.method = `${method}`;
+    if (body !== undefined) options.body = JSON.stringify(body);
+    if (header !== undefined) Object.assign(options.headers, header);
+    return options;
+}
 
 

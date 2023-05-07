@@ -1,6 +1,6 @@
-import {GET_PROFILE_SUCCESS, PROFILE_RESET} from "../actions/profile";
+import {GET_PROFILE_SUCCESS} from "../actions/profile";
 
-const initialState  = {
+const initialState = {
     profileLoaded: false,
     name: '',
     email: '',
@@ -18,9 +18,6 @@ export const profileReducer = (state = initialState, action) => {
                 password: action.password
             };
         }
-       /* case PROFILE_RESET: {
-            return initialState;
-        }*/
         default: {
             return state;
         }

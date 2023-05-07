@@ -1,20 +1,16 @@
 import {Button, Input, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components";
-import React, {useState} from "react";
+import React from "react";
 import globalPageStyle from "../global-page.module.css";
 import {useDispatch} from "react-redux";
 import {Navigate, useNavigate} from "react-router-dom";
 import {getResetPasswordRequest} from "../../services/actions/reset-password";
 import {getCookie, isLogged} from "../../utils/utils";
+import {useForm} from "../../hooks/useForm";
 
 const formData = {password: "", code: ""}
 
 const ResetPasswordPage = () => {
-    const [values, setValues] = useState(formData)
-
-    const handleChange = (e) => {
-        const {value, name} = e.target;
-        setValues({...values, [name]: value});
-    }
+    const {values, handleChange} = useForm(formData)
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -25,8 +21,8 @@ const ResetPasswordPage = () => {
         return (
             <Navigate to={'/'}/>
         );
-    }else if (getCookie('isForgotPasswordFlag') === undefined){
-       return  <Navigate to={'/forgot-password'} />
+    } else if (getCookie('isForgotPasswordFlag') === undefined) {
+        return <Navigate to={'/forgot-password'}/>
     }
 
     const onSubmit = (e) => {

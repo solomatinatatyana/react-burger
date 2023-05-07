@@ -1,22 +1,23 @@
-import React, {useState} from "react";
+import React from "react";
 import {Button, EmailInput, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components";
 import globalPageStyle from '../global-page.module.css'
 import {Navigate, useLocation, useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {loginRequest} from "../../services/actions/login";
 import {isLogged} from "../../utils/utils";
+import {useForm} from "../../hooks/useForm";
 
 const formData = {email: "", password: ""}
 
 const LoginPage = () => {
 
-    const [values, setValues] = useState(formData);
+    const {values, handleChange} = useForm(formData)
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation()
 
-    const from = location.state?.from || '/';
+    const from = location.state?.from.pathname || '/';
 
     if (isLogged()) {
         return (
@@ -26,14 +27,8 @@ const LoginPage = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        dispatch(loginRequest({email: values.email, password: values.password}, () => navigate("/")))
+        dispatch(loginRequest(values, () => navigate(from)))
     }
-
-    const handleChange = (event) => {
-        const {value, name} = event.target;
-        setValues({...values, [name]: value});
-    };
-
 
     const onRegister = () => navigate('/register');
     const onForgotPassword = () => navigate('/forgot-password');

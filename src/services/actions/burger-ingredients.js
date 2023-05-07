@@ -1,4 +1,4 @@
-import {checkResponse, NORMA_API} from "../../utils/burger-api";
+import {request} from "../../utils/burger-api";
 
 export const GET_INGREDIENTS_REQUEST = 'GET_INGREDIENTS_REQUEST';
 export const GET_INGREDIENTS_SUCCESS = 'GET_INGREDIENTS_SUCCESS';
@@ -12,8 +12,9 @@ export const getAllIngredients = () => {
         dispatch({
             type: GET_INGREDIENTS_REQUEST
         });
-        fetch(`${NORMA_API}/ingredients`)
-            .then(checkResponse)
+        request("/ingredients", {
+            method: "GET"
+        })
             .then(res => {
                 if (res && res.success) {
                     dispatch({

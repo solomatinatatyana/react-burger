@@ -5,10 +5,10 @@ import {useEffect, useState} from "react";
 import styles from './profile.module.css'
 import {getProfileRequest, updateProfileRequest} from "../../services/actions/profile";
 import globalPageStyle from "../../pages/global-page.module.css";
+import {useForm} from "../../hooks/useForm";
 
 
 const formData = {name: "", email: "", password: ""}
-
 
 const ProfileForm = () => {
 
@@ -16,9 +16,10 @@ const ProfileForm = () => {
     const dispatch = useDispatch();
 
     const {profileLoaded, name, email, password} = useSelector(state => state.profile);
-    const [values, setValues] = useState({name: "", email: "", password: ""});
-    const [initialUserValues, setInitialUserValues] = useState(formData);
+    const {values, handleChange, setValues} = useForm(formData);
+    const [initialUserValues, setInitialUserValues] = useState({});
     const [isChanged, setIsChanged] = useState(false);
+
 
     useEffect(() => {
         if (!profileLoaded) {
@@ -28,11 +29,6 @@ const ProfileForm = () => {
             setInitialUserValues({name, email, password});
         }
     }, [profileLoaded])
-
-    const handleChange = (e) => {
-        const {value, name} = e.target;
-        setValues({...values, [name]: value});
-    };
 
     const onChange = (e) => {
         handleChange(e);

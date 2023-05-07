@@ -66,7 +66,6 @@ const BurgerListElement = () => {
     }
 
     const checkoutOrder = () => {
-        //todo очистить конструктор после успешного получения номера заказа, не удаляя старые ингредиенты
         if (!isLogged()) {
             navigate("/login")
         }
@@ -202,7 +201,7 @@ const BurgerListElement = () => {
                 </div>
                 <div className={globalStyle.container}>
                     <Button htmlType="button" onClick={checkoutOrder} type="primary" size="medium"
-                            disabled={getBuns().length === 0}>
+                            disabled={getBuns().length === 0 || getNotBuns().length === 0}>
                         <span className="text text_type_main-default">Оформить заказ</span>
                     </Button>
                     <div style={{overflow: "hidden"}}>

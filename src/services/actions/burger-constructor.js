@@ -4,6 +4,7 @@ export const UPDATE_BUN = 'UPDATE_BUN';
 export const UPDATE_SELECTED_OTHER_INGREDIENTS = 'UPDATE_SELECTED_OTHER_INGREDIENTS';
 export const UPDATE_SELECTED_BUNS = 'UPDATE_SELECTED_BUNS';
 export const MOVE_INGREDIENT = 'MOVE_INGREDIENT';
+export const RESET_BURGER_CONSTRUCTOR = 'RESET_BURGER_CONSTRUCTOR';
 
 
 export const getSelectedOtherIngredients = (other) => {
@@ -44,6 +45,8 @@ export const updateBun = (ingredient) => {
         payload: ingredient
     }
 }
+
+export const resetBurgerConstructor = () => ({ type: RESET_BURGER_CONSTRUCTOR });
 
 export const shuffleIngredient = (dragIndex, hoverIndex) => {
     return {

@@ -1,32 +1,32 @@
-import {checkResponse, NORMA_API} from "../../utils/burger-api";
+import {request} from "../../utils/burger-api";
 
 export const CHECKOUT_REQUEST = 'CHECKOUT_REQUEST';
 export const CHECKOUT_SUCCESS = 'CHECKOUT_SUCCESS';
 export const CHECKOUT_FAILED = 'CHECKOUT_FAILED';
 
-export const checkout = (data) =>{
-    return function(dispatch) {
+export const checkout = (data) => {
+    return function (dispatch) {
         dispatch({
             type: CHECKOUT_REQUEST
         });
-        fetch(`${NORMA_API}/orders`, {
+        request("/orders", {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data)
         })
-            .then(checkResponse)
             .then(res => {
                 if (res && res.success) {
                     dispatch({
                         type: CHECKOUT_SUCCESS,
                         order: res
                     });
+                    //dispatch({type: RESET_BURGER_CONSTRUCTOR})
                 } else {
                     dispatch({
                         type: CHECKOUT_FAILED
                     });
                 }
-            }).catch(err=>{
+            }).catch(err => {
             dispatch({type: CHECKOUT_FAILED})
         });
     };
