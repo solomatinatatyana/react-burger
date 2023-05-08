@@ -16,6 +16,8 @@ import {
 import {useDrop} from "react-dnd";
 import BurgerElement from "./burger-element";
 import {resetCountBun} from "../../services/actions/burger-ingredients";
+import {useNavigate} from "react-router-dom";
+import {isLogged} from "../../utils/utils";
 
 const BurgerListElement = () => {
 
@@ -33,6 +35,7 @@ const BurgerListElement = () => {
     }))
 
     const dispatch = useDispatch()
+    const navigate = useNavigate();
 
     const getIds = () => {
         return selectedIngredients?.map(el => el._id);
@@ -60,6 +63,13 @@ const BurgerListElement = () => {
         dispatch(checkout({
             "ingredients": getIds()
         }))
+    }
+
+    const checkoutOrder = () => {
+        if (!isLogged()) {
+            navigate("/login")
+        }
+        handleOpenModal()
     }
 
     const handleCloseModal = () => {
@@ -148,7 +158,7 @@ const BurgerListElement = () => {
                     <div ref={dropBunTopTarget} className={`${isHoverBunTop && styles.onHover}`}>
                         {isBunContent
                             ? <div className={bunPlace}><
-                                BurgerElement element={getBuns()[0]} type={"top"} extraClass={"pt-4"}/>
+                                BurgerElement element={getBuns()[0]} type={"top"} extraClass={"pt-4 ml-6"}/>
                             </div>
                             : (<div className={`${styles.burgerTopBunBox}`}><h3
                                 className={`${bunStart} pb-4 pt-4 ml-9 mr-1 `}>Перетащите булку</h3></div>)
@@ -173,7 +183,7 @@ const BurgerListElement = () => {
                         {isBunContent
                             ?
                             <div className={bunPlace}>
-                                <BurgerElement element={getBuns()[0]} type={"bottom"} extraClass={"pb-4"}/>
+                                <BurgerElement element={getBuns()[0]} type={"bottom"} extraClass={"pb-4 ml-6"}/>
                             </div>
                             : (<div className={`${styles.burgerBottomBunBox}`}>
                                 <h3 className={`${bunStart} pb-4 pt-4 ml-9 mr-2 `}>Перетащите булку</h3>
@@ -190,7 +200,8 @@ const BurgerListElement = () => {
                     <CurrencyIcon type="primary"/>
                 </div>
                 <div className={globalStyle.container}>
-                    <Button htmlType="button" onClick={handleOpenModal} type="primary" size="medium">
+                    <Button htmlType="button" onClick={checkoutOrder} type="primary" size="medium"
+                            disabled={getBuns().length === 0 || getNotBuns().length === 0}>
                         <span className="text text_type_main-default">Оформить заказ</span>
                     </Button>
                     <div style={{overflow: "hidden"}}>

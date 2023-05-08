@@ -9,6 +9,7 @@ import {getIngredientInfo} from "../../services/actions/ingredient-details";
 import {useInView} from "react-intersection-observer";
 import globalStyle from '../global.module.css'
 import styles from './burger-ingredients.module.css'
+import {useLocation} from "react-router-dom";
 
 const BurgerIngredients = () => {
 
@@ -16,7 +17,6 @@ const BurgerIngredients = () => {
         ingredients,
         ingredientsRequest,
         ingredientsFailed,
-        ingredientInfo
     } = useSelector(store => ({
         ingredients: store.burgerIngredients.ingredients,
         ingredientsRequest: store.burgerIngredients.ingredientsRequest,
@@ -38,24 +38,9 @@ const BurgerIngredients = () => {
     const sauceList = ingredients.filter(b => b.type === "sauce")
     const mainList = ingredients.filter(b => b.type === "main")
 
-    const [isOpen, setIsOpen] = useState(false)
-
     const handleOpenModal = (ingredient) => {
-        setIsOpen(true)
         dispatch(getIngredientInfo(ingredient))
     }
-
-    const handleCloseModal = () => {
-        setIsOpen(false)
-    }
-
-    const modal = (
-        <Modal isOpened={isOpen}
-               header={"Детали ингредиента"}
-               onClose={handleCloseModal}>
-            <IngredientDetails cardDetail={ingredientInfo}/>
-        </Modal>
-    )
 
     const handleTabClick = (type) => {
         const element = document.getElementById(type);
@@ -92,7 +77,6 @@ const BurgerIngredients = () => {
                     </div>
                 </div>
             </section>
-            {isOpen && modal}
         </>
     )
 }

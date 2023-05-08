@@ -10,7 +10,7 @@ import {closeModal} from "../../services/actions/modal";
 
 const modalRoot = document.getElementById("react-modals");
 
-const Modal = ({isOpened, header, children, onClose}) => {
+const Modal = ({header, children, onClose}) => {
 
     const dispatch = useDispatch();
 
@@ -36,7 +36,7 @@ const Modal = ({isOpened, header, children, onClose}) => {
 
     return ReactDOM.createPortal(
         (
-            <ModalOverlay onClose={handleClose} isOpened={isOpened}>
+            <ModalOverlay onClose={handleClose}>
                 <div className={`${styles.modal}`}>
                     <div className={`${styles.modalBody} pl-10 pr-10 pt-10`} onClick={(evt) => evt.stopPropagation()}>
                         <div
@@ -58,7 +58,6 @@ const Modal = ({isOpened, header, children, onClose}) => {
 export default Modal;
 
 Modal.propTypes = {
-    isOpened: PropTypes.bool.isRequired,
     header: PropTypes.string,
     children: PropTypes.any.isRequired,
     onClose: PropTypes.func.isRequired
