@@ -1,4 +1,5 @@
 import {REGISTER_REQUEST, REGISTER_SUCCESS} from "../actions/register";
+import {TRegisterActions} from "../action-types/register";
 
 export type TRegisterState = {
     userData: any
@@ -10,7 +11,7 @@ const initialState: TRegisterState = {
     registerRequest: false,
 };
 
-export const registerReducer = (state = initialState, action:any):TRegisterState =>{
+export const registerReducer = (state = initialState, action: TRegisterActions): TRegisterState => {
     switch (action.type) {
         case REGISTER_REQUEST: {
             return {
@@ -19,7 +20,7 @@ export const registerReducer = (state = initialState, action:any):TRegisterState
             };
         }
         case REGISTER_SUCCESS: {
-            return { ...state, registerRequest: false, userData: action };
+            return {...state, registerRequest: false, userData: action};
         }
         default: {
             return state;

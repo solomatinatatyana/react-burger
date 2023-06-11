@@ -4,12 +4,12 @@ import OrderDetails from "../modals/order-details";
 import globalStyle from "../global.module.css";
 import styles from "./burger-constructor.module.css"
 import Modal from "../modals/modal";
-import {useDispatch} from "react-redux";
-import {checkout} from "../../services/actions/order-details";
+import {makeOrderRequest} from "../../services/actions/order-details";
 import {Loader} from "../loader/loader";
 import {
     addIngredient,
     getSelectedOtherIngredients,
+    resetBurgerConstructor,
     shuffleIngredient,
     updateBun
 } from "../../services/actions/burger-constructor";
@@ -18,20 +18,12 @@ import BurgerElement from "./burger-element";
 import {resetCountBun} from "../../services/actions/burger-ingredients";
 import {useNavigate} from "react-router-dom";
 import {isLogged} from "../../utils/utils";
-import {useSelector} from "../../services/hook-store";
-
-interface IRootState{
-    orderDetail: any
-    burgerIngredients: any
-    burgerConstructor: any
-    selectedIngredients: any
-    ingredients: any
-}
+import {useDispatch, useSelector} from "../../services/hook-store";
 
 const BurgerListElement: React.FC = () => {
 
     const [isOpen, setIsOpen] = useState<boolean>(false)
-    const {  order, checkoutRequest, checkoutFailed, selectedIngredients, ingredients } = useSelector(store => ({
+    const {order, checkoutRequest, checkoutFailed, selectedIngredients, ingredients} = useSelector(store => ({
         order: store.orderDetail.order,
         checkoutRequest: store.orderDetail.checkoutRequest,
         checkoutFailed: store.orderDetail.checkoutFailed,
@@ -66,9 +58,10 @@ const BurgerListElement: React.FC = () => {
 
     const handleOpenModal = () => {
         setIsOpen(true)
-        dispatch(checkout({
+        dispatch(makeOrderRequest({
             "ingredients": getIds()
-        }))
+        }, () => navigate("/login")))
+        dispatch(resetBurgerConstructor());
     }
 
     const checkoutOrder = () => {

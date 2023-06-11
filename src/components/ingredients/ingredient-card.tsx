@@ -1,10 +1,9 @@
-import React, {CSSProperties} from "react";
+import React from "react";
 import {Counter, CurrencyIcon} from "@ya.praktikum/react-developer-burger-ui-components";
 import globalStyle from "../global.module.css";
 import {useDrag} from "react-dnd";
 import styles from './ingredient-card.module.css'
 import {useSelector} from "../../services/hook-store";
-import {number} from "prop-types";
 
 interface IProps {
     card: MODEL.TIngredient,
@@ -23,12 +22,12 @@ const IngredientCard: React.FC<IProps> = (props) => {
 
     const isBun = cardElem.type === 'bun'
 
-    const countBuns = (id:string): number => {
+    const countBuns = (id: string): number => {
         return selectedIngredients?.filter((el: MODEL.TIngredient) => el.type === 'bun').length * 2
     }
 
     const countIngredients = (id: string): number => {
-        return selectedIngredients?.filter((el:  MODEL.TIngredient) => el._id === id).length
+        return selectedIngredients?.filter((el: MODEL.TIngredient) => el._id === id).length
     }
 
     //const {count} = props

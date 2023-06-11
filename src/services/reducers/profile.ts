@@ -1,4 +1,5 @@
 import {GET_PROFILE_SUCCESS} from "../actions/profile";
+import {TProfileActions} from "../action-types/profile";
 
 export type TProfileState = {
     profileLoaded: boolean
@@ -14,7 +15,7 @@ const initialState: TProfileState = {
     password: ''
 };
 
-export const profileReducer = (state = initialState, action:any): TProfileState => {
+export const profileReducer = (state = initialState, action: TProfileActions): TProfileState => {
     switch (action.type) {
         case GET_PROFILE_SUCCESS: {
             return {

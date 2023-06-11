@@ -1,4 +1,10 @@
-export function setCookie(name: string, value: string, props?: any): void {
+export function setCookie(name: string, value: string, props?:
+    {
+        path?: string
+        expires?: Date | string | number| any
+        [propName: string]: any
+    }
+): void {
     props = props || {};
     let exp = props.expires;
     if (typeof exp == 'number' && exp) {
@@ -55,5 +61,4 @@ export const setOptions = (method?: string | undefined, body?: object | undefine
     if (header !== undefined) Object.assign(options.headers, header);
     return options;
 }
-
 

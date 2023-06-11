@@ -9,10 +9,10 @@ interface IProps {
     onClick: (ingredient: MODEL.TIngredient) => void
     title: string
     inView: any
-    ref: ForwardedRef<any>
+    ref: ForwardedRef<HTMLDivElement>
 }
 
-const IngredientCardList: React.FC<IProps> = forwardRef(({ingredients , onClick, title, inView}, ref) => {
+const IngredientCardList: React.FC<IProps> = forwardRef(({ingredients, onClick, title, inView}, ref) => {
 
     const location = useLocation();
 

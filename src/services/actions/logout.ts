@@ -1,10 +1,11 @@
 import {checkResponse, checkSuccess, NORMA_API} from "../../utils/burger-api";
 import {deleteCookies, getRefreshToken} from "../../utils/utils";
+import {AppDispatch, AppThunk} from "../hook-store";
 
 export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
 
-export const logoutRequest = (token: string| undefined, navigate: () => void):any => {
-    return function (dispatch: any) {
+export const logoutRequest = (token: string| undefined, navigate: () => void):AppThunk => {
+    return function (dispatch: AppDispatch) {
         dispatch({
             type: LOGOUT_REQUEST
         });

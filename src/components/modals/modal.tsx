@@ -2,10 +2,9 @@ import React, {ReactElement, useCallback, useEffect} from "react";
 import ReactDOM from "react-dom";
 import styles from './modal.module.css'
 import {CloseIcon} from "@ya.praktikum/react-developer-burger-ui-components";
-import {useDispatch} from "react-redux";
 import ModalOverlay from "./modal-overlay";
 import {closeModal} from "../../services/actions/modal";
-import {useSelector} from "../../services/hook-store";
+import {useDispatch, useSelector} from "../../services/hook-store";
 
 
 interface IProps {

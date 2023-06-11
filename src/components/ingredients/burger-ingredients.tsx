@@ -1,13 +1,12 @@
 import React, {useMemo} from "react";
 import IngredientCardList from "./ingredient-card-list";
 import IngredientTabs from "./ingredient-tabs";
-import {useDispatch} from "react-redux";
 import {Loader} from "../loader/loader";
 import {getIngredientInfo} from "../../services/actions/ingredient-details";
 import {useInView} from "react-intersection-observer";
 import globalStyle from '../global.module.css'
 import styles from './burger-ingredients.module.css'
-import {useSelector} from "../../services/hook-store";
+import {useDispatch, useSelector} from "../../services/hook-store";
 
 const BurgerIngredients: React.FC = () => {
 

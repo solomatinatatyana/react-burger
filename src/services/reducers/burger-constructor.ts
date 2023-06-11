@@ -4,9 +4,9 @@ import {
     MOVE_INGREDIENT,
     RESET_BURGER_CONSTRUCTOR,
     UPDATE_BUN,
-    UPDATE_SELECTED_BUNS,
     UPDATE_SELECTED_OTHER_INGREDIENTS,
 } from "../actions/burger-constructor";
+import {TBurgerConstructorActions} from "../action-types/burger-constructor";
 
 const initialIngredient = {
     carbohydrates: 0,
@@ -41,7 +41,7 @@ const initialState: TBurgerConstructorState = {
 };
 
 
-export const constructorReducer = (state = initialState, action: any): TBurgerConstructorState => {
+export const constructorReducer = (state = initialState, action: TBurgerConstructorActions): TBurgerConstructorState => {
     switch (action.type) {
         case ADD_INGREDIENT: {
             return {
@@ -67,12 +67,12 @@ export const constructorReducer = (state = initialState, action: any): TBurgerCo
                 selectedOtherIngredients: action.payload,
             };
         }
-        case UPDATE_SELECTED_BUNS: {
+        /*case UPDATE_SELECTED_BUNS: {
             return {
                 ...state,
                 selectedBuns: action.payload,
             };
-        }
+        }*/
         case RESET_BURGER_CONSTRUCTOR: {
             return {
                 selectedIngredients: [initialIngredient]

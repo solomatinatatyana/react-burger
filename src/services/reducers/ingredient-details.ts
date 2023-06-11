@@ -1,4 +1,5 @@
 import {GET_INGREDIENT_INFO} from "../actions/ingredient-details";
+import {TIngredientDetailsActions} from "../action-types/ingredient-details";
 
 export type TIngredientDetailState = {
     ingredientInfo: MODEL.TIngredient
@@ -23,7 +24,7 @@ const initialState: TIngredientDetailState = {
     }
 };
 
-export const ingredientDetailReducer = (state = initialState, action:any): TIngredientDetailState => {
+export const ingredientDetailReducer = (state = initialState, action: TIngredientDetailsActions): TIngredientDetailState => {
     switch (action.type) {
         case GET_INGREDIENT_INFO: {
             return {

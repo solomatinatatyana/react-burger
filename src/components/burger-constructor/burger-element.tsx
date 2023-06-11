@@ -2,8 +2,8 @@ import {ConstructorElement, DragIcon} from "@ya.praktikum/react-developer-burger
 import React, {useCallback, useRef} from "react";
 import {useDrag, useDrop} from "react-dnd";
 import {deleteIngredient} from "../../services/actions/burger-constructor";
-import {useDispatch} from "react-redux";
 import styles from './burger-constructor.module.css'
+import {useDispatch} from "../../services/hook-store";
 
 interface IProps {
     element: MODEL.TIngredient

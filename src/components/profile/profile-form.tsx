@@ -1,12 +1,11 @@
 import {Button, EmailInput, Input, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components";
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
 import React, {ChangeEvent, FormEvent, useEffect, useState} from "react";
 import styles from './profile.module.css'
 import {getProfileRequest, updateProfileRequest} from "../../services/actions/profile";
 import globalPageStyle from "../../pages/global-page.module.css";
-import {TUseForm, useForm} from "../../hooks/useForm";
-import {useSelector} from "../../services/hook-store";
+import {useForm} from "../../hooks/useForm";
+import {useDispatch, useSelector} from "../../services/hook-store";
 
 
 const formData = {name: "", email: "", password: ""}

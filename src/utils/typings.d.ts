@@ -11,8 +11,8 @@ declare namespace MODEL {
         fat: number
         carbohydrates: number
         image: string
-        image_mobile?: string
-        image_large?: string
+        image_mobile: string
+        image_large: string
         count: number
         price: number
         __v: number
@@ -27,6 +27,12 @@ declare namespace MODEL {
         number: number;
         createdAt: string;
         updatedAt: string;
+    }
+
+    export type TOrdersData = {
+        orders: TOrder[];
+        total: number;
+        totalToday: number;
     }
 
     /** Пользователь **/
@@ -79,6 +85,14 @@ declare namespace MODEL {
     export type TResetPasswordRs = {
         success: boolean;
         message: string;
+    }
+
+    /** WS **/
+    export type TWSMessage = {
+        success: boolean;
+        orders: TOrder[];
+        total: number;
+        totalToday: number;
     }
 
 }
