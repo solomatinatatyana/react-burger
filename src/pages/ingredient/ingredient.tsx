@@ -12,7 +12,7 @@ const IngredientPage: React.FC<{ mode: string }> = ({mode}) => {
 
     const {ingredients, ingredientsIsLoaded} = useSelector(store => store.burgerIngredients)
 
-    let ingredientRef = useRef<any>();
+    let ingredientRef = useRef<MODEL.TIngredient>();
 
     const [isFiltered, setIsFiltered] = useState(false);
 

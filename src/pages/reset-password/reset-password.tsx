@@ -1,11 +1,11 @@
 import {Button, Input, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components";
 import React, {FormEvent} from "react";
 import globalPageStyle from "../global-page.module.css";
-import {useDispatch} from "react-redux";
 import {Navigate, useNavigate} from "react-router-dom";
 import {getResetPasswordRequest} from "../../services/actions/reset-password";
 import {getCookie, isLogged} from "../../utils/utils";
 import {useForm} from "../../hooks/useForm";
+import {useDispatch} from "../../services/hook-store";
 
 const formData = {password: "", code: ""}
 

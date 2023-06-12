@@ -2,10 +2,10 @@ import React, {FormEvent} from "react";
 import {Button, EmailInput, PasswordInput} from "@ya.praktikum/react-developer-burger-ui-components";
 import globalPageStyle from '../global-page.module.css'
 import {Navigate, useLocation, useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
 import {loginRequest} from "../../services/actions/login";
 import {isLogged} from "../../utils/utils";
 import {useForm} from "../../hooks/useForm";
+import {useDispatch} from "../../services/hook-store";
 
 const formData = {email: "", password: ""}
 

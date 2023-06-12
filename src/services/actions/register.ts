@@ -2,12 +2,13 @@ import {request} from "../../utils/burger-api";
 import {setCookie} from "../../utils/utils";
 import {getProfile} from "./profile";
 import {TInputValues} from "../../hooks/useForm";
+import {AppDispatch, AppThunk} from "../hook-store";
 
 export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 
-export const registerRequest = (form: TInputValues, navigate: ()=>void):any => {
-    return function (dispatch:any) {
+export const registerRequest = (form: TInputValues, navigate: ()=>void):AppThunk => {
+    return function (dispatch:AppDispatch) {
         dispatch({
             type: REGISTER_REQUEST
         });

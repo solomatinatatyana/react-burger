@@ -4,6 +4,7 @@ import {
     GET_INGREDIENTS_SUCCESS,
     RESET_COUNT_BUN,
 } from "../actions/burger-ingredients";
+import {TBurgerIngredientsActions} from "../action-types/burger-ingredients";
 
 export type TBurgerIngredientsState = {
     ingredients: MODEL.TIngredient[],
@@ -21,7 +22,7 @@ const initialState: TBurgerIngredientsState = {
     count: 0
 };
 
-export const ingredientsReducer = (state = initialState, action: any): TBurgerIngredientsState => {
+export const ingredientsReducer = (state = initialState, action: TBurgerIngredientsActions): TBurgerIngredientsState => {
     switch (action.type) {
         case GET_INGREDIENTS_REQUEST: {
             return {

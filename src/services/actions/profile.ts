@@ -1,13 +1,16 @@
 import {getAllTokens, getCookie, setCookie, setOptions} from "../../utils/utils";
 import {request} from "../../utils/burger-api";
 import {TInputValues} from "../../hooks/useForm";
+import {requestWithAuth} from "../get-data";
+import {AppDispatch, AppThunk} from "../hook-store";
+import {IGetProfileSuccess} from "../action-types/profile";
 
 export const GET_PROFILE_SUCCESS = 'GET_PROFILE_SUCCESS';
 export const UPDATE_PROFILE = 'UPDATE_PROFILE';
 
 
-export const getProfileRequest = (navigate: () => void): any => {
-    return function (dispatch: any) {
+export const getProfileRequest = (navigate: () => void): AppThunk => {
+    return function (dispatch: AppDispatch) {
         requestWithAuth(`/auth/user`, setOptions("GET"), navigate)
             .then(res => {
                     dispatch(getProfile(res.user, getCookie('password') || ''));
@@ -16,8 +19,8 @@ export const getProfileRequest = (navigate: () => void): any => {
     };
 }
 
-export const updateProfileRequest = (form: TInputValues, navigate: () => void): any => {
-    return function (dispatch: any) {
+export const updateProfileRequest = (form: TInputValues, navigate: () => void): AppThunk => {
+    return function (dispatch: AppDispatch) {
         dispatch({type: UPDATE_PROFILE})
         requestWithAuth(`/auth/user`, setOptions("PATCH",
             {name: form.name, email: form.email, password: form.password}), navigate)
@@ -29,17 +32,7 @@ export const updateProfileRequest = (form: TInputValues, navigate: () => void): 
     };
 }
 
-async function requestWithAuth(url: string, options: { [optionKey: string]: string | object }, navigate: () => void) {
-    const accessToken = await refreshTokenRequest(navigate);
-    let fullOptions = options;
-    options.headers === undefined
-        ? fullOptions.headers = {authorization: accessToken}
-        : Object.assign(fullOptions.headers, {authorization: accessToken})
-    return request(url, fullOptions);
-}
-
-
-export const getProfile = (user: MODEL.TUser, password: string) => {
+export const getProfile = (user: MODEL.TUser, password: string) : IGetProfileSuccess  => {
     return {
         type: GET_PROFILE_SUCCESS,
         name: user.name,

@@ -1,4 +1,5 @@
 import {CHECKOUT_FAILED, CHECKOUT_REQUEST, CHECKOUT_SUCCESS} from "../actions/order-details";
+import {ORDER_ID_RESET, TOrderActions} from "../action-types/order-details";
 
 export type TOrderDetailsState = {
     order: any
@@ -12,7 +13,7 @@ const initialState: TOrderDetailsState = {
     checkoutFailed: false,
 };
 
-export const orderDetailReducer = (state = initialState, action: any): TOrderDetailsState => {
+export const orderDetailReducer = (state = initialState, action: TOrderActions): TOrderDetailsState => {
     switch (action.type) {
         case CHECKOUT_REQUEST: {
             return {
@@ -25,6 +26,9 @@ export const orderDetailReducer = (state = initialState, action: any): TOrderDet
         }
         case CHECKOUT_FAILED: {
             return {...state, checkoutFailed: true, checkoutRequest: false};
+        }
+        case ORDER_ID_RESET: {
+            return initialState;
         }
         default: {
             return state;

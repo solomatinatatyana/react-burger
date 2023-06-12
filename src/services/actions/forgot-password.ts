@@ -1,11 +1,12 @@
 import {request} from "../../utils/burger-api";
 import {setCookie} from "../../utils/utils";
 import {TInputValues} from "../../hooks/useForm";
+import {AppDispatch, AppThunk} from "../hook-store";
 
 export const FORGOT_PASSWORD_REQUEST = 'FORGOT_PASSWORD_REQUEST';
 
-export const getForgotPasswordRequest = (form: TInputValues, navigate: ()=>void):any => {
-    return function (dispatch:any) {
+export const getForgotPasswordRequest = (form: TInputValues, navigate: () => void): AppThunk => {
+    return function (dispatch: AppDispatch) {
         dispatch({
             type: FORGOT_PASSWORD_REQUEST
         });

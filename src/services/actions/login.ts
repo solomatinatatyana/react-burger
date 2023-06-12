@@ -2,12 +2,13 @@ import {request} from "../../utils/burger-api";
 import {setCookie} from "../../utils/utils";
 import {getProfile} from "./profile";
 import {TInputValues} from "../../hooks/useForm";
+import {AppDispatch, AppThunk} from "../hook-store";
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
-export const loginRequest = (form: TInputValues, navigate: () => void):any => {
-    return function (dispatch: any) {
+export const loginRequest = (form: TInputValues, navigate: () => void): AppThunk => {
+    return function (dispatch: AppDispatch) {
         dispatch({
             type: LOGIN_REQUEST
         });

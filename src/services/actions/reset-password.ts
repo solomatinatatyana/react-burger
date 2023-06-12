@@ -1,11 +1,12 @@
 import {checkResponse, checkSuccess, NORMA_API} from "../../utils/burger-api";
 import {setCookie} from "../../utils/utils";
 import {TInputValues} from "../../hooks/useForm";
+import {AppDispatch, AppThunk} from "../hook-store";
 
 export const RESET_PASSWORD_REQUEST = 'RESET_PASSWORD_REQUEST';
 
-export const getResetPasswordRequest = (form: TInputValues, navigate: ()=> void):any => {
-    return function (dispatch:any) {
+export const getResetPasswordRequest = (form: TInputValues, navigate: ()=> void):AppThunk => {
+    return function (dispatch:AppDispatch) {
         dispatch({
             type: RESET_PASSWORD_REQUEST
         });

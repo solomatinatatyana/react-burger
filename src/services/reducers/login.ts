@@ -1,4 +1,5 @@
 import {LOGIN_REQUEST} from "../actions/login";
+import {TLoginActions} from "../action-types/login";
 
 export type TLoginState = {
     userData: any
@@ -10,7 +11,7 @@ const initialState: TLoginState = {
     loginRequest: false,
 };
 
-export const loginReducer = (state = initialState, action: any): TLoginState => {
+export const loginReducer = (state = initialState, action: TLoginActions): TLoginState => {
     switch (action.type) {
         case LOGIN_REQUEST: {
             return {

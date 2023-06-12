@@ -4,9 +4,9 @@ import globalStyle from '../global.module.css'
 
 interface IProps {
     tabClick: (type: string)=> void
-    inViewBuns: any
-    inViewSauces: any
-    inViewMain: any
+    inViewBuns: boolean
+    inViewSauces: boolean
+    inViewMain: boolean
 }
 
 const IngredientTabs: React.FC<IProps> = ({tabClick, inViewBuns, inViewSauces, inViewMain}) => {
