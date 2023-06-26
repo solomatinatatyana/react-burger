@@ -35,7 +35,7 @@ const AppHeader: React.FC = () => {
                     <div className={`p-4 ${styles.logo}`}>
                         <NavLink to="/"><Logo/></NavLink>
                     </div>
-                    <div className={`${styles.navigationPaddingUserBlock}`} onClick={onLogin}>
+                    <div className={`${styles.navigationPaddingUserBlock}`} onClick={onLogin} data-test-id={'profile'}>
                         <AppHeaderNavLink linkType="profileType" isActive={pathname === '/login'}>Личный
                             кабинет</AppHeaderNavLink>
                     </div>

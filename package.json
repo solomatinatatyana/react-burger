@@ -5,9 +5,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.4",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
     "@types/node": "^16.18.23",
     "@types/react": "^18.0.31",
     "@types/react-dom": "^18.0.11",
@@ -30,7 +28,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress:open": "./node_modules/.bin/cypress open",
+    "cy:open": "cypress open",
+    "predeploy": "npm run build",
+    "deploy-script": "npm run build && scp -r ./build/* dev_test@158.160.111.234:/home/dev_test/stellar-frontend"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +53,17 @@
     ]
   },
   "devDependencies": {
-    "redux-devtools-extension": "^2.13.9"
+    "redux-devtools-extension": "^2.13.9",
+    "@testing-library/cypress": "^9.0.0",
+    "@testing-library/react": "^14.0.0",
+    "@types/cypress": "^1.1.3",
+    "@types/jest": "^29.5.0",
+    "@types/uuid": "^9.0.1",
+    "cypress": "^12.8.1",
+    "eslint-plugin-cypress": "^2.12.1",
+    "fetch-mock": "^9.11.0",
+    "jest": "^27.5.1",
+    "react-test-renderer": "^18.2.0",
+    "redux-mock-store": "^1.5.4"
   }
 }

@@ -6,12 +6,12 @@ export type TRegisterState = {
     registerRequest: boolean
 }
 
-const initialState: TRegisterState = {
+export const initialRegisterState: TRegisterState = {
     userData: null,
     registerRequest: false,
 };
 
-export const registerReducer = (state = initialState, action: TRegisterActions): TRegisterState => {
+export const registerReducer = (state = initialRegisterState, action: TRegisterActions): TRegisterState => {
     switch (action.type) {
         case REGISTER_REQUEST: {
             return {

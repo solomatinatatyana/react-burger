@@ -5,11 +5,11 @@ export type TForgotPasswordState = {
     forgotPasswordRequest: boolean
 }
 
-const initialState:TForgotPasswordState = {
+export const initialForgotPasswordState:TForgotPasswordState = {
     forgotPasswordRequest: false,
 };
 
-export const forgotPasswordReducer = (state = initialState, action:TForgotPasswordActions):TForgotPasswordState => {
+export const forgotPasswordReducer = (state = initialForgotPasswordState, action:TForgotPasswordActions):TForgotPasswordState => {
     switch (action.type) {
         case FORGOT_PASSWORD_REQUEST: {
             return {

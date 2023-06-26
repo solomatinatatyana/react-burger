@@ -10,7 +10,8 @@ const OrderDetails: React.FC<IProps> = ({detail}) => {
     return <div className={globalStyle.modalDetailsWrapper}>
         <div className={`pb-8 ${globalStyle.container}`}>
             <p className="text text_type_digits-large"
-               style={{textShadow: "0px 0px 16px rgba(51, 51, 255, 0.25), 0px 0px 8px rgba(51, 51, 255, 0.25), 0px 4px 32px rgba(51, 51, 255, 0.5)"}}>
+               style={{textShadow: "0px 0px 16px rgba(51, 51, 255, 0.25), 0px 0px 8px rgba(51, 51, 255, 0.25), 0px 4px 32px rgba(51, 51, 255, 0.5)"}}
+               data-test-id={'orderId'}>
                 {detail?.order.number}
             </p>
         </div>

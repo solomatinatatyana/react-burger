@@ -7,13 +7,13 @@ export type TOrderDetailsState = {
     checkoutFailed: boolean
 }
 
-const initialState: TOrderDetailsState = {
+export const initialOrderDetailsState: TOrderDetailsState = {
     order: null,
     checkoutRequest: false,
     checkoutFailed: false,
 };
 
-export const orderDetailReducer = (state = initialState, action: TOrderActions): TOrderDetailsState => {
+export const orderDetailReducer = (state = initialOrderDetailsState, action: TOrderActions): TOrderDetailsState => {
     switch (action.type) {
         case CHECKOUT_REQUEST: {
             return {
@@ -28,7 +28,7 @@ export const orderDetailReducer = (state = initialState, action: TOrderActions):
             return {...state, checkoutFailed: true, checkoutRequest: false};
         }
         case ORDER_ID_RESET: {
-            return initialState;
+            return initialOrderDetailsState;
         }
         default: {
             return state;

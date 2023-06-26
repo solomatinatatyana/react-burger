@@ -14,7 +14,7 @@ export type TBurgerIngredientsState = {
     count: number
 }
 
-const initialState: TBurgerIngredientsState = {
+export const initialBurgerIngredientsState: TBurgerIngredientsState = {
     ingredients: [],
     ingredientsIsLoaded: false,
     ingredientsRequest: false,
@@ -22,7 +22,7 @@ const initialState: TBurgerIngredientsState = {
     count: 0
 };
 
-export const ingredientsReducer = (state = initialState, action: TBurgerIngredientsActions): TBurgerIngredientsState => {
+export const ingredientsReducer = (state = initialBurgerIngredientsState, action: TBurgerIngredientsActions): TBurgerIngredientsState => {
     switch (action.type) {
         case GET_INGREDIENTS_REQUEST: {
             return {

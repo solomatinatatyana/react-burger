@@ -8,14 +8,14 @@ export type TProfileState = {
     password: string
 }
 
-const initialState: TProfileState = {
+export const initialProfileState: TProfileState = {
     profileLoaded: false,
     name: '',
     email: '',
     password: ''
 };
 
-export const profileReducer = (state = initialState, action: TProfileActions): TProfileState => {
+export const profileReducer = (state = initialProfileState, action: TProfileActions): TProfileState => {
     switch (action.type) {
         case GET_PROFILE_SUCCESS: {
             return {

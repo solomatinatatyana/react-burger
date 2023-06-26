@@ -6,12 +6,12 @@ export type TLoginState = {
     loginRequest: boolean
 }
 
-const initialState: TLoginState = {
+export const initialLoginState: TLoginState = {
     userData: null,
     loginRequest: false,
 };
 
-export const loginReducer = (state = initialState, action: TLoginActions): TLoginState => {
+export const loginReducer = (state = initialLoginState, action: TLoginActions): TLoginState => {
     switch (action.type) {
         case LOGIN_REQUEST: {
             return {
