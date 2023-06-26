@@ -5,11 +5,11 @@ export type TResetPasswordState = {
     resetPasswordRequest: boolean
 }
 
-const initialState: TResetPasswordState = {
+export const initialResetPasswordState: TResetPasswordState = {
     resetPasswordRequest: false,
 };
 
-export const resetPasswordReducer = (state = initialState, action: TResetPasswordActions): TResetPasswordState => {
+export const resetPasswordReducer = (state = initialResetPasswordState, action: TResetPasswordActions): TResetPasswordState => {
     switch (action.type) {
         case RESET_PASSWORD_REQUEST: {
             return {

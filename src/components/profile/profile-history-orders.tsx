@@ -31,7 +31,7 @@ const ProfileHistoryOrders: React.FC = () => {
     return (
         <>
             {orders.length !== 0 &&
-                <div className={profileHistoryLayout.boxOrders}>
+                <div className={`custom-scroll ${profileHistoryLayout.boxOrders}`}>
                     {
                         orders.sort((a, b) => {
                             if (a.createdAt > b.createdAt) return -1;

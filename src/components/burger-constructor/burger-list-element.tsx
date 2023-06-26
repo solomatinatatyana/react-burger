@@ -154,7 +154,7 @@ const BurgerListElement: React.FC = () => {
     return (<>
             <div className={`${globalStyle.containerColumn} pb-10`}>
                 <div className={`${globalStyle.containerColumn} pt-2`}>
-                    <div ref={dropBunTopTarget} className={`${isHoverBunTop && styles.onHover}`}>
+                    <div ref={dropBunTopTarget} data-test-id={'bunTopTarget'} className={`${isHoverBunTop && styles.onHover}`}>
                         {isBunContent
                             ? <div className={bunPlace}><
                                 BurgerElement element={getBuns()[0]} type={"top"} extraClass={"pt-4 ml-6"}/>
@@ -165,7 +165,7 @@ const BurgerListElement: React.FC = () => {
                     </div>
 
                     <div className={`${ingredientsPlace} custom-scroll ${isHover && styles.onHover}`}
-                         ref={dropTarget}>
+                         ref={dropTarget} data-test-id={'bunIngredientTarget'}>
                         {isIngredientContent
                             ? selectedIngredients.map((item: MODEL.TIngredient, index: number) =>
                                 item.type !== 'bun'
@@ -178,7 +178,7 @@ const BurgerListElement: React.FC = () => {
                         }
                     </div>
 
-                    <div ref={dropBunBottomTarget} className={`${isHoverBunBottom && styles.onHover}`}>
+                    <div ref={dropBunBottomTarget} data-test-id={'bunBottomTarget'} className={`${isHoverBunBottom && styles.onHover}`}>
                         {isBunContent
                             ?
                             <div className={bunPlace}>
@@ -198,7 +198,7 @@ const BurgerListElement: React.FC = () => {
                     </span>
                     <CurrencyIcon type="primary"/>
                 </div>
-                <div className={globalStyle.container}>
+                <div className={globalStyle.container} data-test-id={'buttonCheckoutOrder'}>
                     <Button htmlType="button" onClick={checkoutOrder} type="primary" size="medium"
                             disabled={getBuns().length === 0 || getNotBuns().length === 0}>
                         <span className="text text_type_main-default">Оформить заказ</span>

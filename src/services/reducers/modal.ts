@@ -6,15 +6,15 @@ export type TModalState = {
     resetContentModalFunc: any
 }
 
-const initialState: TModalState = {
+export const initialModalState: TModalState = {
     isOpen: false,
     resetContentModalFunc: null
 };
 
-export const modalReducer = (state = initialState, action:TModalActions): TModalState => {
+export const modalReducer = (state = initialModalState, action:TModalActions): TModalState => {
     switch (action.type) {
         case CLOSE_MODAL: {
-            return initialState;
+            return initialModalState;
         }
         default: {
             return state;

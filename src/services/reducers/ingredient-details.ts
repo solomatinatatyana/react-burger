@@ -5,7 +5,7 @@ export type TIngredientDetailState = {
     ingredientInfo: MODEL.TIngredient
 }
 
-const initialState: TIngredientDetailState = {
+export const initialIngredientDetailState: TIngredientDetailState = {
     ingredientInfo: {
         carbohydrates: 0,
         calories: 0,
@@ -24,7 +24,7 @@ const initialState: TIngredientDetailState = {
     }
 };
 
-export const ingredientDetailReducer = (state = initialState, action: TIngredientDetailsActions): TIngredientDetailState => {
+export const ingredientDetailReducer = (state = initialIngredientDetailState, action: TIngredientDetailsActions): TIngredientDetailState => {
     switch (action.type) {
         case GET_INGREDIENT_INFO: {
             return {

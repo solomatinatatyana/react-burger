@@ -27,7 +27,7 @@ const IngredientCardList: React.FC<IProps> = forwardRef(({ingredients, onClick, 
                               state={{backgroundLocation: location}}
                               style={{color: 'white', textDecoration: "none"}}
                         >
-                            <div id={ingredient.type} key={ingredient._id}
+                            <div id={ingredient._id} key={ingredient._id}
                                  className={styles.ingredientCardWrapper}>
                                 <IngredientCard draggable onclick={() => onClick(ingredient)} card={ingredient}/>
                             </div>

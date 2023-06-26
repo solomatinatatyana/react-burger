@@ -1,0 +1,6 @@
+{
+  "success": true,
+  "user": { "email": "react_test@mail.ru", "password": "react_test" },
+  "accessToken": "Bearer 123456789",
+  "refreshToken": "asffsr542324"
+}
