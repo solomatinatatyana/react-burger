@@ -20,7 +20,7 @@ const OrderInLine: React.FC<{ ingredients: MODEL.TIngredient[] }> = ({ingredient
 
         imageList[countImages - 1 - step] =
             (<div className={orderInLineLayout.image} style={{left: `${step * 48}px`}} key={step}>
-                <ImageIngredients src={ingredients[step].image_mobile} name={ingredients[step].name} count={rest}/>
+                <ImageIngredients src={ingredients[step]?.image_mobile} name={ingredients[step]?.name} count={rest}/>
             </div>)
 
         step--;
